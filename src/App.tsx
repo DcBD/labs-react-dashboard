@@ -1,8 +1,16 @@
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { UtilsService } from 'services/UtilsService';
+
+
+
 
 function App() {
+
+  UtilsService.SayHello();
+
   return (
     <div className="App">
       <header className="App-header">
