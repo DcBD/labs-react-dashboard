@@ -1,3 +1,4 @@
+import { IconSize } from "shared/Size";
 
 
 export class UtilsService {
@@ -7,6 +8,10 @@ export class UtilsService {
      */
     public static SayHello() : void{
         console.info("Hello");
+    }
+
+    public static IconSizeClass(iconSize : IconSize) : string{
+        return `icon-size--${iconSize}`;
     }
 
 }

@@ -1,0 +1,26 @@
+@import "/src/style/theme.scss";
+
+.dropdown-menu {
+    position: relative;
+
+    background-color: $white;
+
+    border: solid $gray 1px;
+
+    .dropdown_menu--items {
+        position: absolute;
+        box-sizing: border-box;
+
+        background-color: $white;
+
+        border: solid $gray 1px;
+        border-top: 0px;
+        border-radius: 0px 0px 10px 10px;
+
+        width: 100%;
+        padding: $padding_sm;
+    }
+}
+
+.drop_down_menu_items--item {
+}

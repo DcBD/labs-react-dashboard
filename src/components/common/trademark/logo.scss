@@ -1,0 +1,37 @@
+$defaultSize: 35px;
+$mediumSize: 50px;
+$smallSize: 25px;
+
+.trademark-logo {
+
+    &.icon-size--default{
+        width:  $defaultSize;
+        height: $defaultSize;
+
+        svg{
+            width: $defaultSize;
+            height: $defaultSize;
+        }
+    }
+
+    &.icon-size--medium{
+        width:  $mediumSize;
+        height: $mediumSize;
+
+        svg{
+            width: $mediumSize;
+            height: $mediumSize;
+        }
+    }
+
+    &.icon-size--small{
+        width:  $smallSize;
+        height: $smallSize;
+
+        svg{
+            width: $smallSize;
+            height: $smallSize;
+        }
+    }
+
+}
