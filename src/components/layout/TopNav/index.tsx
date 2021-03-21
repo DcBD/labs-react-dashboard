@@ -5,11 +5,13 @@ import NavigationMenu from 'components/common/navigation/NavigationMenu';
 
 
 
+
 const TopNav = () => {
 
 
     return (
-        <AppBar position="static" color="default">
+
+        <AppBar position="static" color="inherit">
             <Toolbar>
                 <Logo size="default" />
 
@@ -25,6 +27,8 @@ const TopNav = () => {
                 NOTIFICATIONS
             </Toolbar>
         </AppBar>
+
+
     )
 }
 

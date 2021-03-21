@@ -1,4 +1,10 @@
+import React from 'react'
+import { Icon } from "components/common/misc"
 
+import HomeIcon from '@material-ui/icons/Home';
+import WebIcon from '@material-ui/icons/Web';
+
+import { FC } from "react";
 
 
 interface INavigationItems {
@@ -19,9 +25,14 @@ interface INavigationItem {
 const NavigationItems: INavigationItems = {
     platform: [
         {
-            Icon: () => (<span> [ ] </span>),
+            Icon: () => <Icon IconComponent={HomeIcon} />,
             Text: () => <span>Home</span>,
             value: "home"
+        },
+        {
+            Icon: () => <Icon IconComponent={WebIcon} />,
+            Text: () => <span>Publications</span>,
+            value: "publications"
         }
     ],
 
