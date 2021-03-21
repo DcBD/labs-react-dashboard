@@ -8,7 +8,7 @@ interface IIconProps {
 
 const Icon: FC<IIconProps> = ({ IconComponent }: IIconProps) => {
 
-    return <div>
+    return <div className="svg-disable-events">
         {<IconComponent />}
     </div>
 }

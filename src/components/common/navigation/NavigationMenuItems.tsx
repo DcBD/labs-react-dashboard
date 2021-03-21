@@ -13,7 +13,7 @@ interface INavigationItems {
     account: Array<INavigationItem>
 }
 
-interface INavigationItem {
+export interface INavigationItem {
     Icon: any,
     Text: any,
     value: string
@@ -39,7 +39,22 @@ const NavigationItems: INavigationItems = {
     workspaces: [],
 
     account: []
+}
 
+export function getItem(value: string): INavigationItem | undefined {
+    const items = NavigationItems;
+
+    const allItems = [...items.platform, ...items.workspaces, ...items.account];
+
+    return allItems.find((item) => item.value.toLowerCase() === value.toLowerCase());
+}
+
+export function getItems(value: string): Array<INavigationItem> {
+    const items = NavigationItems;
+
+    const allItems = [...items.platform, ...items.workspaces, ...items.account];
+
+    return allItems.filter((item) => item.value.toLowerCase() === value.toLowerCase());
 }
 
 

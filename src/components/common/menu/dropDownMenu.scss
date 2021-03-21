@@ -10,6 +10,13 @@
         border-bottom: solid $gray 1px;
 
         padding: $padding_sm;
+
+        display: flex;
+        justify-content: space-between;
+        padding: $padding_sm;
+
+        pointer-events: all;
+        cursor: pointer;
     }
 
     .dropdown_menu--items {

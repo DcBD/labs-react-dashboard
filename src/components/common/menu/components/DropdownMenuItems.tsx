@@ -2,7 +2,7 @@ import { MenuItem } from 'components/common/menu';
 import React, { FC } from 'react'
 
 
-interface IDropDownMenuItemObject {
+export interface IDropDownMenuItemObject {
     Icon: any,
     Text: any,
     value: string
