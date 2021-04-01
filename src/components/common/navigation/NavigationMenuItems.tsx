@@ -1,12 +1,4 @@
-import React from 'react'
 import { Icon } from "components/common/misc"
-
-import HomeIcon from '@material-ui/icons/Home';
-import WebIcon from '@material-ui/icons/Web';
-
-import { FC } from "react";
-
-
 interface INavigationItems {
     platform: Array<INavigationItem>
     workspaces: Array<INavigationItem>
@@ -25,27 +17,27 @@ export interface INavigationItem {
 const NavigationItems: INavigationItems = {
     platform: [
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="house2" />,
             Text: () => <span>Home</span>,
             value: "home"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="publications" />,
             Text: () => <span>Publications</span>,
             value: "publications"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="people" />,
             Text: () => <span>People</span>,
             value: "people"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="entities2" />,
             Text: () => <span>Entities</span>,
             value: "entities"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="administration" />,
             Text: () => <span>Administration</span>,
             value: "administration"
         }
@@ -53,27 +45,27 @@ const NavigationItems: INavigationItems = {
 
     workspaces: [
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="comments" />,
             Text: () => <span>Client contract</span>,
             value: "client contract"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="comments" />,
             Text: () => <span>Supplier contract</span>,
             value: "supplier contract"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="entities" />,
             Text: () => <span>Corporate</span>,
             value: "corporate"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="comments" />,
             Text: () => <span>Group Norms</span>,
             value: "group norms"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="comments" />,
             Text: () => <span>Real estate contracts</span>,
             value: "real estate contracts"
         }
@@ -81,17 +73,17 @@ const NavigationItems: INavigationItems = {
 
     account: [
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="comments" />,
             Text: () => <span>Corporate</span>,
             value: "corporate"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="privacy" />,
             Text: () => <span>Group Norms</span>,
             value: "group norms"
         },
         {
-            Icon: () => <Icon icon="house" />,
+            Icon: () => <Icon icon="settings" />,
             Text: () => <span>Real estate contracts</span>,
             value: "real estate contracts"
         }

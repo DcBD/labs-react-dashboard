@@ -13,13 +13,17 @@ import { Spacing } from 'styledHelpers/Spacing';
 const Container = styled.div`
     ${borderBottom()};
 
-    padding: ${Spacing[1]};
+    padding: ${Spacing[2]}rem;
 
     display: flex;
     justify-content:space-between;
 
     pointer-events: all;
     cursor: pointer;
+`;
+
+const IconContainer = styled.div`
+    margin-right: ${Spacing[1]};
 `;
 
 interface IDropdownMenuHeaderProps {
@@ -38,7 +42,7 @@ const DropdownMenuHeader: FC<IDropdownMenuHeaderProps> = ({
 
     return (
         <Container onClick={onClick} >
-            <selected.Icon /> <selected.Text /> <Icon icon="arrow-down" />
+            <IconContainer><selected.Icon /></IconContainer> <selected.Text /> <Icon icon="arrow-down" />
         </Container>
     )
 }

@@ -13,10 +13,11 @@ export interface IDropdownMenuItemProps {
 
 
 const Container = styled.div`
-    padding: 0 ${Spacing[1]};
+    padding: ${Spacing[1]}em ${Spacing[2]}em;
     font-size: ${FontSizes[18]};
     display: flex;
     cursor: pointer;
+    text-align:left;
     ${grayBackgroundHover()}
 `;
 

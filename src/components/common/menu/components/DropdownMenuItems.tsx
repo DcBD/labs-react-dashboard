@@ -1,6 +1,8 @@
 import { Box, Typography } from '@material-ui/core';
 import { MenuItem } from 'components/common/menu';
 import React, { FC } from 'react'
+import styled from 'styled-components';
+import { Spacing } from 'styledHelpers/Spacing';
 
 
 export interface IDropDownMenuItemObject {
@@ -16,6 +18,13 @@ export interface IDropdownMenuItemsProps {
     onChange: (value: string) => void,
     title?: string
 }
+
+
+const ItemIcon = styled.div`
+    margin-right: ${Spacing[4]}rem;
+`;
+
+
 
 const DropdownMenuItems: FC<IDropdownMenuItemsProps> = ({
     isOpen = false,
@@ -35,7 +44,7 @@ const DropdownMenuItems: FC<IDropdownMenuItemsProps> = ({
             </Box>
             <>
                 {items?.map((item, i) => <MenuItem key={i} onClick={() => onChange(item.value)}>
-                    <div><item.Icon /></div>
+                    <ItemIcon><item.Icon /></ItemIcon>
                     <div><item.Text /></div>
                 </MenuItem>)}
             </>

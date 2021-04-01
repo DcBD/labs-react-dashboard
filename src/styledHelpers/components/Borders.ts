@@ -27,6 +27,8 @@ export const borderRounded = (): Styles => {
 export const borderRoundedWithoutTop = (): Styles => {
     return {
         ...borderRounded(),
-        borderTop: "0px"
+        borderTop: "0px",
+        borderTopLeftRadius: "0px",
+        borderTopRightRadius: "0px",
     }
 }
