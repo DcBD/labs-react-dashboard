@@ -25,20 +25,77 @@ export interface INavigationItem {
 const NavigationItems: INavigationItems = {
     platform: [
         {
-            Icon: () => <Icon IconComponent={HomeIcon} />,
+            Icon: () => <Icon icon="house" />,
             Text: () => <span>Home</span>,
             value: "home"
         },
         {
-            Icon: () => <Icon IconComponent={WebIcon} />,
+            Icon: () => <Icon icon="house" />,
             Text: () => <span>Publications</span>,
             value: "publications"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>People</span>,
+            value: "people"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Entities</span>,
+            value: "entities"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Administration</span>,
+            value: "administration"
         }
     ],
 
-    workspaces: [],
+    workspaces: [
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Client contract</span>,
+            value: "client contract"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Supplier contract</span>,
+            value: "supplier contract"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Corporate</span>,
+            value: "corporate"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Group Norms</span>,
+            value: "group norms"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Real estate contracts</span>,
+            value: "real estate contracts"
+        }
+    ],
 
-    account: []
+    account: [
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Corporate</span>,
+            value: "corporate"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Group Norms</span>,
+            value: "group norms"
+        },
+        {
+            Icon: () => <Icon icon="house" />,
+            Text: () => <span>Real estate contracts</span>,
+            value: "real estate contracts"
+        }
+    ]
 }
 
 export function getItem(value: string): INavigationItem | undefined {

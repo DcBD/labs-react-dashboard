@@ -1,16 +1,26 @@
-import { FC } from "react";
+import React, { FC } from "react";
+import { IconsList } from "shared/Icons";
+import { IconName } from "shared/Types";
+import styled from "styled-components";
 
+
+
+const Container = styled.div`
+
+`;
 
 interface IIconProps {
-    IconComponent: any
+    icon: IconName
 }
 
 
-const Icon: FC<IIconProps> = ({ IconComponent }: IIconProps) => {
+const Icon: FC<IIconProps> = React.memo(({ icon }: IIconProps) => {
 
-    return <div className="svg-disable-events">
-        {<IconComponent />}
-    </div>
-}
+    const IconComponent = IconsList[icon];
+
+    return <Container>
+        <IconComponent />
+    </Container>
+})
 
 export default Icon;

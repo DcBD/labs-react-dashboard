@@ -1,12 +1,22 @@
 import React, { FC } from 'react';
-import '../dropDownMenu.scss';
+import styled from 'styled-components';
+import { Colors } from 'styledHelpers/Colors';
+
+
+
 
 interface IDropdownMenuProps {
     children?: React.ReactNode,
     wrapperRef?: React.RefObject<HTMLDivElement>
     onChange?: () => void
-
 }
+
+
+const Container = styled.div`
+    position: relative;
+    background-color: ${Colors.white};
+    min-width: 250px;
+`;
 
 const DropdownMenu: FC<IDropdownMenuProps> = ({
     children,
@@ -14,15 +24,12 @@ const DropdownMenu: FC<IDropdownMenuProps> = ({
     onChange
 }: IDropdownMenuProps) => {
 
-
-
     return (
-        <div className="dropdown-menu" ref={wrapperRef}>
+        <Container ref={wrapperRef}>
             {
                 children
             }
-
-        </div>
+        </Container>
     )
 }
 

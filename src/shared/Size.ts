@@ -1,1 +1,0 @@
-export type IconSize = "default" | "small" | "medium";

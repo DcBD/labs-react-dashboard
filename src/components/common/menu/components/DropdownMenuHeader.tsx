@@ -1,10 +1,26 @@
-import { SelectAllRounded } from '@material-ui/icons';
 import { IDropDownMenuItemObject } from 'components/common/menu/components/DropdownMenuItems';
 import { Icon } from 'components/common/misc';
 import React, { FC } from 'react'
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import styled from 'styled-components';
+import { borderBottom } from 'styledHelpers/components/Borders';
+import { Spacing } from 'styledHelpers/Spacing';
+
+
+
+const Container = styled.div`
+    ${borderBottom()};
+
+    padding: ${Spacing[1]};
+
+    display: flex;
+    justify-content:space-between;
+
+    pointer-events: all;
+    cursor: pointer;
+`;
 
 interface IDropdownMenuHeaderProps {
     selected: IDropDownMenuItemObject
@@ -21,9 +37,9 @@ const DropdownMenuHeader: FC<IDropdownMenuHeaderProps> = ({
 
 
     return (
-        <div className="dropdown_menu--header" onClick={onClick} >
-            <selected.Icon /> <selected.Text /> <Icon IconComponent={isOpen ? ExpandLessIcon : ExpandMoreIcon} />
-        </div>
+        <Container onClick={onClick} >
+            <selected.Icon /> <selected.Text /> <Icon icon="arrow-down" />
+        </Container>
     )
 }
 

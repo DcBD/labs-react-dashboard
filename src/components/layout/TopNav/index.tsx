@@ -1,7 +1,9 @@
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, TextField, Toolbar } from '@material-ui/core';
 import Logo from 'components/common/trademark/Logo';
 
 import NavigationMenu from 'components/common/navigation/NavigationMenu';
+import SearchBar from 'components/layout/TopNav/components/SearchBar';
+
 
 
 
@@ -13,11 +15,11 @@ const TopNav = () => {
 
         <AppBar position="static" color="inherit">
             <Toolbar>
-                <Logo size="default" />
+                <Logo />
 
                 <NavigationMenu />
 
-                SERCZ BAR
+                <SearchBar />
 
 
                 HOME BTN

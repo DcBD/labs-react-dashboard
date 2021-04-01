@@ -1,24 +1,33 @@
 import React from 'react';
 
 import { ReactComponent as LogoIcon } from 'icons/logo.svg'
-import { IconSize } from 'shared/Size';
-import { UtilsService } from 'services/UtilsService';
-import './logo.scss';
 
+
+import styled from 'styled-components';
+import { Size } from 'shared/Types';
+import { IconSize } from 'styledHelpers/Sizes';
 
 interface ILogoProps {
-    size?: IconSize
+    size?: Size
 }
 
-const Logo = ({
-    size = "default"
+
+
+
+const Container = styled.div<{ size: Size }>`
+    width: ${(props) => IconSize[props.size]};
+    height: ${(props) => IconSize[props.size]};
+`;
+
+const Logo = React.memo(({
+    size = "16"
 }: ILogoProps) => {
 
-    return <div className={`trademark-logo ${UtilsService.IconSizeClass(size)}`}>
+    return <Container size={size}>
         <LogoIcon />
-    </div>
+    </Container>
 
-}
+})
 
 
 

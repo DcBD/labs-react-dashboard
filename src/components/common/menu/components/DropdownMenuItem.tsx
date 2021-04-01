@@ -1,5 +1,9 @@
 
 import React, { FC } from 'react';
+import styled from 'styled-components';
+import { grayBackgroundHover } from 'styledHelpers/components/Effects';
+import { FontSizes } from 'styledHelpers/Sizes';
+import { Spacing } from 'styledHelpers/Spacing';
 
 
 export interface IDropdownMenuItemProps {
@@ -8,6 +12,14 @@ export interface IDropdownMenuItemProps {
 }
 
 
+const Container = styled.div`
+    padding: 0 ${Spacing[1]};
+    font-size: ${FontSizes[18]};
+    display: flex;
+    cursor: pointer;
+    ${grayBackgroundHover()}
+`;
+
 const DropDownMenuItem: FC<IDropdownMenuItemProps> = ({
     children,
     onClick
@@ -15,9 +27,9 @@ const DropDownMenuItem: FC<IDropdownMenuItemProps> = ({
 
 
     return (
-        <div className="drop_down_menu_items--item" onClick={onClick}>
+        <Container onClick={onClick}>
             {children}
-        </div>
+        </Container>
     )
 }
 
