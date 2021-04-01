@@ -1,11 +1,11 @@
+import { Icon } from 'components/common/misc';
 import React from 'react';
-
-import { ReactComponent as LogoIcon } from 'icons/logo.svg'
-
-
-import styled from 'styled-components';
 import { Size } from 'shared/Types';
+import styled from 'styled-components';
 import { IconSize } from 'styledHelpers/Sizes';
+
+
+
 
 interface ILogoProps {
     size?: Size
@@ -24,7 +24,7 @@ const Logo = React.memo(({
 }: ILogoProps) => {
 
     return <Container size={size}>
-        <LogoIcon />
+        <Icon icon="logo" />
     </Container>
 
 })
