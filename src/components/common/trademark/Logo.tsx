@@ -12,8 +12,6 @@ interface ILogoProps {
 }
 
 
-
-
 const Container = styled.div<{ size: Size }>`
     width: ${(props) => IconSize[props.size]};
     height: ${(props) => IconSize[props.size]};

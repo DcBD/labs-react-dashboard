@@ -7,5 +7,7 @@ export const Spacing = {
     3: spacer,
     4: spacer * 1.5,
     5: spacer * 3,
+    6: spacer * 6,
+    7: spacer * 12,
     "auto": "auto",
 }

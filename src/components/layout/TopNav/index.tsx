@@ -1,12 +1,52 @@
-import { AppBar, TextField, Toolbar } from '@material-ui/core';
-import Logo from 'components/common/trademark/Logo';
-
+import { AppBar } from '@material-ui/core';
 import NavigationMenu from 'components/common/navigation/NavigationMenu';
+import Logo from 'components/common/trademark/Logo';
 import SearchBar from 'components/layout/TopNav/components/SearchBar';
+import styled from 'styled-components';
+import { Spacing } from 'styledHelpers/Spacing';
+import Icon from 'components/common/misc/Icon';
 
 
+const Container = styled.div`
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding: ${Spacing[1]}rem ${Spacing[3]}rem;
+`;
 
+const LogoContainer = styled.div`
+    margin-right: ${Spacing[7]}px;
+`
 
+const SearchBarContainer = styled.div`
+    width:80%;
+    display:flex;
+    align-items:center;
+`;
+
+const LeftSection = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+`;
+
+const CenterSection = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex:1;
+`;
+
+const RightSection = styled.div`
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div{
+        margin: 0 ${Spacing[3]}rem;
+    }
+`;
 
 const TopNav = () => {
 
@@ -14,20 +54,32 @@ const TopNav = () => {
     return (
 
         <AppBar position="static" color="inherit">
-            <Toolbar>
-                <Logo />
+            <Container>
+                <LeftSection>
+                    <LogoContainer>
+                        <Logo />
+                    </LogoContainer>
 
-                <NavigationMenu />
+                    <NavigationMenu />
+                </LeftSection>
 
-                <SearchBar />
+                <CenterSection>
+                    <SearchBarContainer>
+                        <SearchBar />
+                    </SearchBarContainer>
+                </CenterSection>
 
 
-                HOME BTN
+                <RightSection>
+                    <Icon icon="house" />
 
-                COMMENTS
+                    <Icon icon="comments" filled badgeContent="3" />
 
-                NOTIFICATIONS
-            </Toolbar>
+                    <Icon icon="bell" filled badgeContent="3" />
+
+                </RightSection>
+
+            </Container>
         </AppBar>
 
 

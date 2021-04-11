@@ -1,16 +1,13 @@
 import InputBase from '@material-ui/core/InputBase';
-
+import { Icon } from 'components/common/misc';
 import styled from 'styled-components';
 
 
 const Container = styled.div`
-    margin-left:2rem;
-    width:100%;
     position:relative;
-    display:flex;
-
+    width:100%;
     div{
-        width:60%;
+        width:inherit;
         input[type='text']{
             position:relative;
             border:solid #e8e8e8 1px;
@@ -21,9 +18,10 @@ const Container = styled.div`
     }
 `;
 
-const Icon = styled.div`
+const IconContainer = styled.div`
 
 `;
+
 
 const SearchBar = () => {
 

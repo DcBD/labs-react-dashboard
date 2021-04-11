@@ -32,3 +32,9 @@ export const borderRoundedWithoutTop = (): Styles => {
         borderTopRightRadius: "0px",
     }
 }
+
+export const borderTransparentBottom = (): Styles => {
+    return {
+        borderBottom: "solid transparent 1px"
+    }
+}

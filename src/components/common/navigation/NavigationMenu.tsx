@@ -62,10 +62,6 @@ const NavigationMenu: FC<INavigationMenu> = ({
                     </DropdownMenuSection>
 
                 </DropdownMenuContent>
-
-
-
-
             </DropdownMenu>
         </div>)
 }

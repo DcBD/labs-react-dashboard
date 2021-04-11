@@ -11,12 +11,12 @@ export const FontSizes = {
 
 
 export const IconSize = {
-    10: '0.6rem',
-    12: '0.74rem',
-    14: '0.85rem',
+    10: '0.6rem', // Not implemented
+    12: '0.74rem', // Not implemented
+    14: '0.85rem', // Not implemented
     16: '25px',
-    18: '1.13rem',
-    20: '1.25rem',
-    22: '1.4rem',
-    24: '1.55rem'
+    18: '1.13rem', // Not implemented
+    20: '1.25rem', // Not implemented
+    22: '1.4rem', // Not implemented
+    24: '1.55rem' // Not implemented
 }

@@ -1,17 +1,15 @@
 import { IDropDownMenuItemObject } from 'components/common/menu/components/DropdownMenuItems';
 import { Icon } from 'components/common/misc';
 import React, { FC } from 'react'
-
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import styled from 'styled-components';
-import { borderBottom } from 'styledHelpers/components/Borders';
+import { borderBottom, borderTransparentBottom } from 'styledHelpers/components/Borders';
 import { Spacing } from 'styledHelpers/Spacing';
 
 
 
-const Container = styled.div`
-    ${borderBottom()};
+const Container = styled.div<{ isOpen: boolean }>`
+
+    ${(props) => props.isOpen ? borderBottom() : borderTransparentBottom()}
 
     padding: ${Spacing[2]}rem;
 
@@ -41,7 +39,7 @@ const DropdownMenuHeader: FC<IDropdownMenuHeaderProps> = ({
 
 
     return (
-        <Container onClick={onClick} >
+        <Container onClick={onClick} isOpen={isOpen}>
             <IconContainer><selected.Icon /></IconContainer> <selected.Text /> <Icon icon="arrow-down" />
         </Container>
     )
