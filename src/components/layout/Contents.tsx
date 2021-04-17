@@ -6,10 +6,7 @@ import { Spacing } from "styledHelpers/Spacing";
 const Container = styled.div`
     position:relative;
     display: flex;
-
     padding: ${Spacing[4]}rem;
-
-
 `;
 
 

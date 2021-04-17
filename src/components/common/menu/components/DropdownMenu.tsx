@@ -16,6 +16,7 @@ const Container = styled.div`
     position: relative;
     background-color: ${Colors.white};
     min-width: 250px;
+    z-index:2;
 `;
 
 const DropdownMenu: FC<IDropdownMenuProps> = ({

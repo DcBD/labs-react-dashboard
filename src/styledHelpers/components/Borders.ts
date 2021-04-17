@@ -17,6 +17,16 @@ export const borderBottom = (): Styles => {
     }
 }
 
+
+export const borderTop = (): Styles => {
+    return {
+        ...border(),
+        borderLeft: "none",
+        borderRight: "none",
+        borderBottom: "none"
+    }
+}
+
 export const borderRounded = (): Styles => {
     return {
         ...border(),

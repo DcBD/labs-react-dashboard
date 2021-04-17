@@ -5,3 +5,10 @@ export type IconName =
     "ecosystem" | "entities" | "entities2" | "house" | "house2" | "logo" |
     "logout" | "network" | "people" | "plus" | "privacy" | "publications" | "search" |
     "settings" | "user-plus";
+
+
+export type FontWeight = "normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "initial" | "inherit";
+
+export type ButtonType = "text" | "outlined" | "contained" | undefined
+
+export type ButtonColor = "primary" | "secondary" | "dark"
