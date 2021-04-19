@@ -21,6 +21,7 @@ export const Colors = {
 
     blueBadge: "#0381be",
     blueText: "#495bab",
+    blueGradient: "linear-gradient(180deg, rgba(252,252,252,0) 33%, rgba(53,102,235,0.6726891440169818) 100%)",
 
     /* #endregion */
 

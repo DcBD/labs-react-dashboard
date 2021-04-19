@@ -4,38 +4,45 @@ import Layout from "components/layout/Layout";
 import TopNav from 'components/layout/TopNav/TopNav';
 import Contents from 'components/layout/Contents';
 import LeftMenu from 'components/layout/LeftMenu/LeftMenu';
-import Page from 'components/layout/Page';
+
 import Routes from 'components/layout/Routes';
-import { useDispatch } from 'react-redux';
-import { setUsers, setComments, setPhotos, setPosts } from 'features/api/apiSlice'
+import { useDispatch, useStore } from 'react-redux';
+import { setUsers } from 'features/api/usersSlice'
 import { Api } from 'features/api/Api';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { usersSelectors } from 'app/store';
+import { setComments } from 'features/api/commentsSlice';
+import { setPhotos } from 'features/api/photosSlice';
+import { setPosts } from 'features/api/postsSlice';
+import PageLoader from 'components/pages/PageLoader';
 
 function App() {
   const dispatch = useDispatch();
 
+  const [isAppReady, setIsAppReady] = useState(false);
+
   useEffect(() => {
-    Api.fetchUsers().then(data => {
-      dispatch(setUsers(data));
-    });
 
-    Api.fetchComments().then(data => {
-      dispatch(setComments(data));
-    });
+    const initApp = async () => {
+      const apiData = await Api.fetchData()
 
-    Api.fetchPhotos().then(data => {
-      dispatch(setPhotos(data));
-    });
+      dispatch(setUsers(apiData.users));
+      dispatch(setComments(apiData.comments));
+      dispatch(setPosts(apiData.posts));
+      dispatch(setPhotos(apiData.photos));
 
-    Api.fetchPosts().then(data => {
-      dispatch(setPosts(data));
-    });
-  })
+      setIsAppReady(true);
+    }
+
+    initApp();
+  }, [])
+
+
 
 
   return (
     <div className="App">
-      <Layout>
+      {isAppReady ? <Layout>
 
         <TopNav />
 
@@ -47,7 +54,7 @@ function App() {
 
         </Contents>
 
-      </Layout>
+      </Layout> : <PageLoader />}
 
 
     </div>

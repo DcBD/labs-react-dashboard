@@ -2,7 +2,7 @@
 import { FC } from 'react'
 import styled from 'styled-components';
 import { Colors } from 'styledHelpers/Colors';
-import { FontWeight } from "shared/Types";
+import { FontWeight, Size } from "shared/Types";
 
 interface Props {
     fontWeight?: FontWeight,
@@ -11,6 +11,7 @@ interface Props {
     marginBottom?: string
     marginRight?: string
     marginLeft?: string
+    fontSize?: Size
 }
 
 
@@ -19,13 +20,14 @@ interface Props {
 export const Text = styled.span<Props>`
     ${({ color }) => color && `color: ${color};`}
     ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight};`}
-
+    ${({ fontSize }) => fontSize && `font-size: ${fontSize}px;`}
+    
     /* Margin */
     ${({ margin }) => margin && `margin: ${margin};`}
-    ${({ marginTop }) => marginTop && `margin: ${marginTop};`}
-    ${({ marginBottom }) => marginBottom && `margin: ${marginBottom};`}
-    ${({ marginRight }) => marginRight && `margin: ${marginRight};`}
-    ${({ marginLeft }) => marginLeft && `margin: ${marginLeft};`}
+    ${({ marginTop }) => marginTop && `margin-top: ${marginTop};`}
+    ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom};`}
+    ${({ marginRight }) => marginRight && `margin-right: ${marginRight};`}
+    ${({ marginLeft }) => marginLeft && `margin-left: ${marginLeft};`}
 
 `;
 

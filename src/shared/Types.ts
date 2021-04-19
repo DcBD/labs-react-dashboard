@@ -8,6 +8,8 @@ export type IconName =
 
 
 export type FontWeight = "normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "initial" | "inherit";
+export type BackgroundSize = "auto" | "length" | "cover" | "contain" | "initial" | "inherit" | String
+
 
 export type ButtonType = "text" | "outlined" | "contained" | undefined
 
