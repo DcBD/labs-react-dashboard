@@ -7,6 +7,9 @@ import ICollection from "entities/ICollection";
 
 export class Api {
 
+    public static readonly API_URL: string = "https://jsonplaceholder.typicode.com";
+    private static getRoute = (routeName: string) => `${Api.API_URL}/${routeName}`;
+
     public static fetchData = async (): Promise<{ users: Array<IUser>, comments: Array<IComment>, photos: Array<IPhoto>, posts: Array<IPost> }> => {
 
         const users = await Api.fetchUsers();
@@ -23,25 +26,25 @@ export class Api {
     }
 
     public static fetchUsers = async (): Promise<Array<IUser>> => {
-        const users = await fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
+        const users = await fetch(Api.getRoute('users')).then(response => response.json());
 
         return users;
     }
 
     public static fetchComments = async (): Promise<Array<IComment>> => {
-        const comments = await fetch('https://jsonplaceholder.typicode.com/comments').then(response => response.json());
+        const comments = await fetch(Api.getRoute('comments')).then(response => response.json());
 
         return comments;
     }
 
     public static fetchPhotos = async (): Promise<Array<IPhoto>> => {
-        const photos = await fetch('https://jsonplaceholder.typicode.com/photos').then(response => response.json());
+        const photos = await fetch(Api.getRoute('photos')).then(response => response.json());
 
         return photos;
     }
 
     public static fetchPosts = async (): Promise<Array<IPost>> => {
-        const posts = await fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json());
+        const posts = await fetch(Api.getRoute('posts')).then(response => response.json());
 
         return posts;
     }

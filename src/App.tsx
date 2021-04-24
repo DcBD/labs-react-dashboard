@@ -15,6 +15,7 @@ import { setComments } from 'features/api/commentsSlice';
 import { setPhotos } from 'features/api/photosSlice';
 import { setPosts } from 'features/api/postsSlice';
 import PageLoader from 'components/pages/PageLoader';
+import Spacer from 'components/common/misc/Spacer';
 
 function App() {
   const dispatch = useDispatch();

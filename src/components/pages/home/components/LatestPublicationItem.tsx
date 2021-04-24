@@ -13,6 +13,7 @@ import { Spacing } from "styledHelpers/Spacing";
 
 
 const Container = styled.div`
+    position: relative;
     display: flex;
     flex-direction:row;
     margin: ${Spacing[2]}rem 0;

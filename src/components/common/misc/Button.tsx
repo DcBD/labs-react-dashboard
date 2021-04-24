@@ -12,7 +12,7 @@ interface ButtonBaseProps {
 }
 
 interface StyledButtonProps {
-    borderColor?: string
+    $borderColor?: string
 }
 
 interface IButtonProps {
@@ -24,7 +24,7 @@ const StyledButton = styled(Button) <StyledButtonProps>`
     min-width:15px;
     padding: ${Spacing[1]}rem;
     border-width:2px;
-    ${({ borderColor }) => borderColor && `border-color:${borderColor};`}
+    ${({ $borderColor }) => $borderColor && `border-color:${$borderColor};`}
 `;
 
 export const ButtonBase: FC<ButtonBaseProps> = ({ children, type, color }) => {
@@ -32,7 +32,7 @@ export const ButtonBase: FC<ButtonBaseProps> = ({ children, type, color }) => {
     const pallette = buttonColors(color);
 
     return (
-        <StyledButton variant={type} borderColor={pallette.border}> {children} </StyledButton>
+        <StyledButton variant={type} $borderColor={pallette.border}> {children} </StyledButton>
     )
 }
 
