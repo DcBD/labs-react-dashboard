@@ -40,6 +40,7 @@ const Workspaces: FC = () => {
                     <SliderItem><Placeholder /></SliderItem>,
                     <SliderItem><Placeholder /></SliderItem>
                 ]}
+
                 minItemsVisible={4}
             >
                 {(a) =>

@@ -31,10 +31,6 @@ interface Props {
     children: (item: React.ReactNode, i: number) => React.ReactFragment
 }
 
-const styles = {
-    item: { height: '100%', willChange: 'transform' }
-}
-
 const Slider: FC<Props> = ({ items, minItemsVisible, width = 400, children }) => {
 
 
@@ -74,10 +70,8 @@ const Slider: FC<Props> = ({ items, minItemsVisible, width = 400, children }) =>
 
 
     return children && (
-        // @ts-ignore
         <Container {...bind()}>
             {springs.map(({ x }, i) => (
-                // @ts-ignore
                 <SlideItem key={i} width={width} height={width} style={{ x }} children={children(items[i], i)} />
             ))}
         </Container>
