@@ -9,6 +9,12 @@ interface INavigationMenu {
     selected?: string
 }
 
+interface IMenuItems {
+    platform: Array<INavigationItem>
+    workspaces: Array<INavigationItem>
+    account: Array<INavigationItem>
+}
+
 const NavigationMenu: FC<INavigationMenu> = ({
     selected = 'home'
 }: INavigationMenu) => {
@@ -17,10 +23,33 @@ const NavigationMenu: FC<INavigationMenu> = ({
 
     const [value, setValue] = useState(selected)
 
+    const [items, setItems] = useState<IMenuItems>({
+        account: NavigationItems.account,
+        platform: NavigationItems.platform,
+        workspaces: NavigationItems.workspaces
+    })
+
     const handleChange = (value: string): void => {
         setValue(value);
 
         toggleDropdown();
+    }
+
+    const handleItemsFilter = (data: string): void => {
+        if (data === "") {
+            setItems({
+                account: NavigationItems.account,
+                platform: NavigationItems.platform,
+                workspaces: NavigationItems.workspaces
+            });
+        } else {
+            setItems({
+                account: NavigationItems.account.filter(filterItem => filterItem.value.toLowerCase().search(data) >= 0),
+                platform: NavigationItems.platform.filter(filterItem => filterItem.value.toLowerCase().search(data) >= 0),
+                workspaces: NavigationItems.workspaces.filter(filterItem => filterItem.value.toLowerCase().search(data) >= 0),
+            });
+        }
+
     }
 
     return (
@@ -33,20 +62,20 @@ const NavigationMenu: FC<INavigationMenu> = ({
                     <DropdownMenuSection>
 
                         <Box p={1}>
-                            <TextField variant="outlined" size="small" fullWidth placeholder="Filter..." />
+                            <TextField variant="outlined" size="small" fullWidth placeholder="Filter..." onChange={(e) => handleItemsFilter(e.target.value.toLowerCase())} />
                         </Box>
 
                         <MenuItems
                             isOpen
                             onChange={(value) => { handleChange(value) }}
-                            items={NavigationItems.platform}
+                            items={items.platform}
                             title="Platform"
                         />
 
                         <MenuItems
                             isOpen
                             onChange={(value) => { handleChange(value) }}
-                            items={NavigationItems.workspaces}
+                            items={items.workspaces}
                             title="Workspaces"
                         />
 
@@ -56,7 +85,7 @@ const NavigationMenu: FC<INavigationMenu> = ({
                         <MenuItems
                             isOpen
                             onChange={(value) => { handleChange(value) }}
-                            items={NavigationItems.account}
+                            items={items.account}
                             title="Account"
                         />
                     </DropdownMenuSection>
