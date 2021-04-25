@@ -28,7 +28,7 @@ export const Colors = {
     /* #region  Dark Blue */
 
     darkBlueBorder: "#4b5268",
-
+    darkBlueText: "#4b5268",
     /* #endregion */
 }
 

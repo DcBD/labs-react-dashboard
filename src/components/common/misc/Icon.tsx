@@ -21,7 +21,7 @@ const iconBadgeEffect = (badgeContent: string | number): Styles => {
     }
 }
 
-const Container = styled.div<{ filled: boolean, size: Size, badgeContent?: string | number }>`
+const Container = styled.div<{ filled: boolean, $size: Size, badgeContent?: string | number }>`
 
     display:flex;
     position:relative;
@@ -37,8 +37,13 @@ const Container = styled.div<{ filled: boolean, size: Size, badgeContent?: strin
         padding: Spacing[6]
     }}
 
-    width: ${(props) => IconSize[props.size]};
-    height: ${(props) => IconSize[props.size]};
+    width: ${(props) => IconSize[props.$size]};
+    height: ${(props) => IconSize[props.$size]};
+
+    svg{
+        width: ${(props) => IconSize[props.$size]};
+        height: ${(props) => IconSize[props.$size]};
+    }
 
     ${({ badgeContent }) => badgeContent && iconBadgeEffect(badgeContent)}
 `;
@@ -56,9 +61,13 @@ interface IIconProps {
 
 const Icon: FC<IIconProps> = React.memo(({ icon, filled = false, size = "16", badgeContent }: IIconProps) => {
 
+    if (icon === "paper-pen") {
+        console.log(size);
+    }
+
     const IconComponent = IconsList[icon];
 
-    return <Container filled={filled} size={size} badgeContent={badgeContent}>
+    return <Container filled={filled} $size={size} badgeContent={badgeContent}>
         <IconComponent />
 
     </Container>

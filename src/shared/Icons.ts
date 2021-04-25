@@ -20,6 +20,7 @@ import { ReactComponent as Publications } from 'icons/publications.svg'
 import { ReactComponent as Search } from 'icons/search.svg'
 import { ReactComponent as Settings } from 'icons/settings.svg'
 import { ReactComponent as UserPlus } from 'icons/user-plus.svg'
+import { ReactComponent as PaperPen } from 'icons/paper-pen.svg'
 
 
 export const IconsList: Icons = {
@@ -43,4 +44,5 @@ export const IconsList: Icons = {
     "search": Search,
     "settings": Settings,
     "user-plus": UserPlus,
+    "paper-pen": PaperPen
 }

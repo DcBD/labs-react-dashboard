@@ -48,4 +48,14 @@ export const TextSecondary: FC<Props> = ({ children, ...props }) => {
     )
 }
 
+export const TextPrimaryDark: FC<Props> = ({ children, ...props }) => {
+    return (
+        <Text color={Colors.darkBlueText} {...props}>
+            {children}
+        </Text>
+    )
+}
+
+
+
 
