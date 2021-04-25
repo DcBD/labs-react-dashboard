@@ -43,7 +43,7 @@ const LatestPublications: FC = () => {
 
     const state = useStore().getState();
     const publications = postsSelectors.selectAll(state).slice(0, 3);
-    console.log(publications)
+
 
     return (
         <Container>
@@ -54,7 +54,7 @@ const LatestPublications: FC = () => {
 
             </ImageContainer>
             <PublicationsContainer>
-                <TextPrimary fontWeight="600" fontSize="24">Latest publications </TextPrimary>
+                <TextPrimary fontWeight="600" fontSize="24">Latest publications</TextPrimary>
                 <PublicationList>
                     {publications.map(publication => <LatestPublicationItem {...publication} key={publication.id} />)}
                 </PublicationList>

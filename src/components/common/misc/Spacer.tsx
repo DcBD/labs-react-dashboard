@@ -6,9 +6,11 @@ const Container = styled.div`
     flex: 1;
 `;
 
-const Spacer: FC = () => {
+const Spacer: FC = ({ children }) => {
     return (
-        <Container />
+        <Container>
+            {children}
+        </Container>
     )
 }
 

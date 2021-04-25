@@ -17,6 +17,6 @@ export const IconSize = {
     16: '25px',
     18: '1.13rem', // Not implemented
     20: '1.25rem', // Not implemented
-    22: '1.4rem', // Not implemented
+    22: '50px',
     24: '1.55rem' // Not implemented
 }
