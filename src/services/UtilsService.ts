@@ -7,6 +7,9 @@ export class UtilsService {
         console.info("Hello");
     }
 
+    public static Filter(collection: Array<any>, filter: string, key: string) {
+        return collection.filter(obj => obj[key].toLowerCase().indexOf(filter.toLowerCase()) >= 0)
+    }
 
 
 
