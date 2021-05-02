@@ -3,7 +3,7 @@ import { ButtonColor } from "shared/Types"
 export const Colors = {
     white: "#fff",
     black: "#000",
-
+    background: "#f5f7f9",
 
 
 

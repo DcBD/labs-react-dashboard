@@ -3,12 +3,15 @@ import { Icon } from "components/common/misc";
 import Image from "components/common/misc/Image";
 import Spacer from "components/common/misc/Spacer";
 import { FC } from "react-transition-group/node_modules/@types/react";
+import { IconName } from "shared/Types";
 import styled from "styled-components";
 import { Text, TextPrimary, TextPrimaryDark, TextSecondary } from "styledHelpers/components/Text";
 import { Spacing } from "styledHelpers/Spacing";
 
 
-const Container = styled(Card)``;
+const Container = styled(Card)`
+
+`;
 
 const ImageContainer = styled.div`
     width:100%;
@@ -37,7 +40,8 @@ const HeaderContainer = styled.div`
 `;
 
 const ContentFooter = styled.div`
-    margin-top: ${Spacing[2]}rem;
+
+    padding: ${Spacing[2]}rem;
 `;
 
 const FooterActions = styled.div`
@@ -57,7 +61,13 @@ const DotSpacer = styled.div`
     text-align:center;
 `;
 
-const WorkspaceItem: FC = () => {
+interface Props {
+    title: string
+    name: string
+    icon: IconName
+}
+
+const WorkspaceItem: FC<Props> = ({ title, name, icon }) => {
     return (
         <Container>
             <ImageContainer>
@@ -66,15 +76,15 @@ const WorkspaceItem: FC = () => {
             <Content>
                 <HeaderContainer>
                     <IconContainer>
-                        <Icon icon="paper-pen" size="22" />
+                        <Icon icon={icon} size="22" />
                     </IconContainer>
-                    <TextPrimaryDark fontSize="24" fontWeight="600" marginLeft="20px">Client contract</TextPrimaryDark>
+                    <TextPrimaryDark fontSize="20" fontWeight="600" marginLeft="20px">{title}</TextPrimaryDark>
                 </HeaderContainer>
                 <ContentFooter>
                     <FooterActions>
                         <FooterAction>
                             <Icon icon="paper-pen" />
-                            <TextSecondary fontSize="18">Contract</TextSecondary>
+                            <TextSecondary fontSize="18">{name}</TextSecondary>
                         </FooterAction>
 
                         <DotSpacer>
