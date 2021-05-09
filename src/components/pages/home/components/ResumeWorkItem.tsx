@@ -1,20 +1,65 @@
+import { Icon } from 'components/common/misc';
 import Image from 'components/common/misc/Image';
 import { FC } from 'react'
+import { UtilsService } from 'services/UtilsService';
 import { IconName } from 'shared/Types';
 import styled from 'styled-components'
+import { TextPrimary, TextSecondary } from 'styledHelpers/components/Text';
+import { Spacing } from 'styledHelpers/Spacing';
 
 
-const Container = styled.div``;
+const Container = styled.div`
+    padding: ${Spacing[2]}rem ${Spacing[3]}rem;
+    text-align:left;
+`;
 
-const Title = styled.div``;
+const Title = styled.div`
+    margin-bottom: ${Spacing[1]}rem;
+`;
 
-const Description = styled.div``;
+const Description = styled.div`
+    margin-bottom: ${Spacing[1]}rem;
+`;
 
-const CorporationContainer = styled.div``;
+const Footer = styled.div`
+    display:flex;
+    align-items:center;
+`;
 
-const CorporationLogo = styled.div``;
+const CorporationLogo = styled.div`
+    position:relative;
+    height:15px;
+    width:15px;
+    top:1px;
+    margin-right: ${Spacing[1]}rem;
+    *{
+        border-radius:100px;
+    }
+`;
 
-const ContractTypeContainer = styled.div``;
+const ContractTypeContainer = styled.div`
+    display:flex;
+    align-items:center;
+    text-transform:capitalize;
+
+    span{
+        display:block;
+        margin-left:${Spacing[1]}rem;
+    }
+`;
+
+const Spacer = styled.div`
+    width:25px;
+    text-align:center;
+`;
+
+const DotSpacer = () => {
+    return (<Spacer>
+        •
+    </Spacer>)
+}
+
+
 
 type Contract = "client" | "supplier" | "corporate"
 
@@ -44,16 +89,24 @@ const ResumeWorkItem: FC<Props> = ({ title, description, corporation_logo, corpo
 
     return (
         <Container>
-            <Title>{title}</Title>
+            <Title>
+                <TextPrimary fontSize="20">{title}</TextPrimary>
+            </Title>
             <Description>{description}</Description>
-            <CorporationContainer>
+            <Footer>
                 <CorporationLogo>
                     <Image src={corporation_logo} alt={corporation} />
                 </CorporationLogo>
+                <TextSecondary>{corporation}</TextSecondary>
+                <DotSpacer />
                 <ContractTypeContainer>
-                    {contractNameToIconName(contract_type)}
+                    <Icon icon={contractNameToIconName(contract_type)} size="12" />
+
+                    <TextSecondary>{contract_type}</TextSecondary>
                 </ContractTypeContainer>
-            </CorporationContainer>
+                <DotSpacer />
+                <TextSecondary>Updated {UtilsService.Random()} days ago by John Doe</TextSecondary>
+            </Footer>
         </Container>
     )
 }

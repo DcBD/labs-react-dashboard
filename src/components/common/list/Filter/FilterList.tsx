@@ -1,14 +1,34 @@
 
 
-import { Input } from "@material-ui/core";
+import { Card, Input, TextField } from "@material-ui/core";
+import ListMenu from "components/common/list/Filter/ListMenu";
+import Pagination from "components/common/list/Pagination";
+import Spacer from "components/common/misc/Spacer";
+import TextInput from "components/common/misc/TextInput";
 import { FC, useState } from "react";
 import { UtilsService } from "services/UtilsService";
 import styled from "styled-components";
+import { Spacing } from "styledHelpers/Spacing";
 
 
 const Container = styled.div``;
 
-const ItemContainer = styled.div``;
+const ItemContainer = styled(Card)`
+    margin: ${Spacing[3]}rem;
+`;
+
+const Header = styled.div`
+    display:flex;
+`;
+
+
+const Footer = styled.div``;
+
+const Title = styled.div``;
+
+const SearchInput = styled(TextInput)`
+    width:200px;
+`;
 
 interface Item {
     title: string,
@@ -17,24 +37,34 @@ interface Item {
 
 interface Props {
     items: Array<Item>
-    itemsPageCount?: number
+    itemsPageCount?: number,
+    name: string
 
 }
 
-const FilterList: FC<Props> = ({ items, itemsPageCount = 10 }) => {
+const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
 
-    const [listItems, setListItems] = useState(items);
+
     const [page, setPage] = useState<number>(0);
     const [titleFilter, setTitleFilter] = useState<string>("");
 
-    const filteredItems: Array<Item> = UtilsService.Filter(listItems, titleFilter, "title").slice(page, itemsPageCount);
-
+    const filteredItems: Array<Item> = UtilsService.Filter(items, titleFilter, "title");
+    const paginatedItems: Array<Item> = filteredItems.slice(page * itemsPageCount, page * itemsPageCount + itemsPageCount)
+    console.log(page * itemsPageCount, itemsPageCount)
     return (
         <Container>
-            <Input type="text" onChange={(e) => setTitleFilter(e.target.value)} value={titleFilter} />
+            <Header>
+                <Title>{name}</Title>
+                <Spacer />
+                <SearchInput onChange={(e) => setTitleFilter(e.target.value)} value={titleFilter} placeholder="Filter by title..." />
+                <ListMenu />
+            </Header>
             {
-                filteredItems.map(item => <ItemContainer key={item.title}>{item.children}</ItemContainer>)
+                paginatedItems.map(item => <ItemContainer key={item.title}>{item.children}</ItemContainer>)
             }
+            <Footer>
+                <Pagination count={Math.ceil(items.length / itemsPageCount)} page={page} onChange={setPage} />
+            </Footer>
         </Container>
     )
 }

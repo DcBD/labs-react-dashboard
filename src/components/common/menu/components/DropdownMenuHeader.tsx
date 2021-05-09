@@ -18,6 +18,8 @@ const Container = styled.div<{ isOpen: boolean }>`
 
     pointer-events: all;
     cursor: pointer;
+
+    align-items:center;
 `;
 
 const IconContainer = styled.div`
@@ -40,7 +42,7 @@ const DropdownMenuHeader: FC<IDropdownMenuHeaderProps> = ({
 
     return (
         <Container onClick={onClick} isOpen={isOpen}>
-            <IconContainer><selected.Icon /></IconContainer> <selected.Text /> <Icon icon="arrow-down" />
+            <IconContainer><selected.Icon /></IconContainer> <selected.Text /> <Icon icon="arrow-down" size="14" />
         </Container>
     )
 }

@@ -11,6 +11,8 @@ export class UtilsService {
         return collection.filter(obj => obj[key].toLowerCase().indexOf(filter.toLowerCase()) >= 0)
     }
 
-
+    public static Random(multiplier: number = 0.75) {
+        return Math.floor((Math.random() * 100) * multiplier);
+    }
 
 }
