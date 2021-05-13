@@ -45,8 +45,6 @@ const ResumeYourWork: FC = () => {
                 items={
                     items.map(item => ({ title: item.title, children: <ResumeWorkItem {...item} /> }))
                 }
-
-
             />
         </Container>
     )

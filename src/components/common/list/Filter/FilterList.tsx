@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { FC, useState } from "react";
 import { UtilsService } from "services/UtilsService";
 import styled from "styled-components";
+import { TextPrimary, TextPrimaryDark, TextSecondary } from "styledHelpers/components/Text";
 import { Spacing } from "styledHelpers/Spacing";
 
 
@@ -36,6 +37,13 @@ const SearchInput = styled(TextInput)`
     width:200px;
 `;
 
+
+
+const Body = styled.div`
+    margin-top: ${Spacing[4]}rem;
+    min-height: 250px;
+`;
+
 interface Item {
     title: string,
     children: React.ReactNode
@@ -47,6 +55,7 @@ interface Props {
     name: string
 
 }
+
 
 const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
 
@@ -67,16 +76,22 @@ const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
     return (
         <Container>
             <Header>
-                <Title>{name}</Title>
+                <Title><TextPrimary fontSize="24" fontWeight="600" marginLeft="1.5rem">{name}</TextPrimary></Title>
                 <Spacer />
                 <SearchInput onChange={(e) => setTitleFilter(e.target.value)} value={titleFilter} placeholder="Filter by title..." />
                 <ListMenu />
             </Header>
-            {
-                paginatedItems.map(item => <ItemContainer key={item.title}>{item.children}</ItemContainer>)
-            }
+            <Body>
+                {
+                    paginatedItems.length > 0 ? paginatedItems.map(item => <ItemContainer key={item.title}>{item.children}</ItemContainer>) :
+                        (<TextSecondary>
+                            No items were found.
+                        </TextSecondary>)
+                }
+            </Body>
+
             <Footer>
-                <Pagination count={pagesCount} page={page} onChange={setPage} />
+                {pagesCount > 0 && <Pagination count={pagesCount} page={page} onChange={setPage} />}
             </Footer>
         </Container>
     )

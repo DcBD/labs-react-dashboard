@@ -19,8 +19,8 @@ const Container = styled.div`
     position: relative;
     display: block;
     text-align:left;
-    height:450px;
-
+    height:400px;
+    overflow:hidden;
 `
 
 const SliderItem = styled.div`
