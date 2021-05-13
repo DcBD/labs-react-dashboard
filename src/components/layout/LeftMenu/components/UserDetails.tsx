@@ -1,5 +1,6 @@
 import { Avatar } from "@material-ui/core";
 import Item from "components/layout/LeftMenu/components/Item";
+import useAuth from "features/application/hooks/useAuth";
 import { FC } from "react";
 import styled from "styled-components";
 import { border, borderTop } from "styledHelpers/components/Borders";
@@ -35,13 +36,14 @@ const UserImage = styled(Avatar)`
 
 const UserDetails: FC = () => {
 
+    const user = useAuth();
 
     return (
         <Container>
             <Body>
                 <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" />
-                <TextPrimary marginBottom={`${Spacing[1]}rem`} fontWeight="600">John Doe</TextPrimary>
-                <TextSecondary>Job title - Company</TextSecondary>
+                <TextPrimary marginBottom={`${Spacing[1]}rem`} fontWeight="600">{user.name} {user.surname}</TextPrimary>
+                <TextSecondary>{user.company.job_title} - {user.company.name}</TextSecondary>
             </Body>
             <Footer>
                 <Item icon="people" withButton buttonIcon="user-plus">
