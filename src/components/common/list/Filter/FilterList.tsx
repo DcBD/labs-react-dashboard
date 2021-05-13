@@ -5,6 +5,7 @@ import ListMenu from "components/common/list/Filter/ListMenu";
 import Pagination from "components/common/list/Pagination";
 import Spacer from "components/common/misc/Spacer";
 import TextInput from "components/common/misc/TextInput";
+import { useEffect } from "react";
 import { FC, useState } from "react";
 import { UtilsService } from "services/UtilsService";
 import styled from "styled-components";
@@ -22,7 +23,12 @@ const Header = styled.div`
 `;
 
 
-const Footer = styled.div``;
+const Footer = styled.div`
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+`;
 
 const Title = styled.div``;
 
@@ -50,7 +56,14 @@ const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
 
     const filteredItems: Array<Item> = UtilsService.Filter(items, titleFilter, "title");
     const paginatedItems: Array<Item> = filteredItems.slice(page * itemsPageCount, page * itemsPageCount + itemsPageCount)
-    console.log(page * itemsPageCount, itemsPageCount)
+    const pagesCount = Math.ceil(filteredItems.length / itemsPageCount);
+
+    useEffect(() => {
+
+        setPage(0);
+
+    }, [pagesCount])
+
     return (
         <Container>
             <Header>
@@ -63,7 +76,7 @@ const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
                 paginatedItems.map(item => <ItemContainer key={item.title}>{item.children}</ItemContainer>)
             }
             <Footer>
-                <Pagination count={Math.ceil(items.length / itemsPageCount)} page={page} onChange={setPage} />
+                <Pagination count={pagesCount} page={page} onChange={setPage} />
             </Footer>
         </Container>
     )
