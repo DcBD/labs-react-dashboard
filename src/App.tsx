@@ -16,6 +16,9 @@ import { setPhotos } from 'features/api/photosSlice';
 import { setPosts } from 'features/api/postsSlice';
 import PageLoader from 'components/pages/PageLoader';
 import Spacer from 'components/common/misc/Spacer';
+import { loginUser } from 'features/application/authSlice';
+import { Application } from 'features/application/Application';
+import useAuth from 'features/application/hooks/useAuth';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,14 +34,13 @@ function App() {
       dispatch(setComments(apiData.comments));
       dispatch(setPosts(apiData.posts));
       dispatch(setPhotos(apiData.photos));
+      dispatch(loginUser(Application.getLoggedInUser()))
 
       setIsAppReady(true);
     }
 
     initApp();
   }, [])
-
-
 
 
   return (

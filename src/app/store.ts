@@ -4,6 +4,7 @@ import usersReducer, { userAdapter } from 'features/api/usersSlice';
 import commentsReducer, { commentsAdapter } from '../features/api/commentsSlice'
 import postsReducer, { postsAdapter } from '../features/api/postsSlice'
 import photosReducer, { photosAdapter } from '../features/api/photosSlice'
+import authReducer from '../features/application/authSlice'
 
 
 
@@ -13,6 +14,7 @@ const store = configureStore({
         comments: commentsReducer,
         photos: photosReducer,
         posts: postsReducer,
+        auth: authReducer
     },
 })
 
