@@ -61,10 +61,6 @@ interface IIconProps {
 
 const Icon: FC<IIconProps> = React.memo(({ icon, filled = false, size = "16", badgeContent }: IIconProps) => {
 
-    if (icon === "paper-pen") {
-        console.log(size);
-    }
-
     const IconComponent = IconsList[icon];
 
     return <Container filled={filled} $size={size} badgeContent={badgeContent}>

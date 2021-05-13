@@ -77,8 +77,7 @@ const Slider: FC<Props> = ({ minItemsVisible, width = 400, children }) => {
     const wheelOffset = useRef(0)
     const dragOffset = useRef(0)
     const bind = useGesture({
-        onDrag: ({ offset: [x], vxvy: [vx] }) => vx && ((dragOffset.current = -x), runSprings(wheelOffset.current + -x, -vx)),
-        onWheel: ({ offset: [, y], vxvy: [, vy] }) => vy && ((wheelOffset.current = y), runSprings(dragOffset.current + y, vy))
+        onDrag: ({ offset: [x], vxvy: [vx] }) => vx && ((dragOffset.current = -x), runSprings(wheelOffset.current + -x, -vx))
     })
 
 

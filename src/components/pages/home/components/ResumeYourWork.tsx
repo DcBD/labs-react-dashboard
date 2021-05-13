@@ -36,7 +36,6 @@ const ResumeYourWork: FC = () => {
 
     useEffect(() => {
         setItems(getData(200));
-        console.log("w");
     }, [])
 
     return (

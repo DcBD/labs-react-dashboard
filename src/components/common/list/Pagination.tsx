@@ -14,7 +14,6 @@ interface Props {
 }
 
 const Pagination: FC<Props> = ({ count, page, onChange }) => {
-    console.log(page)
     return (<Container>
         <MaterialPagination count={count} page={page + 1} onChange={(e, value) => onChange(value - 1)} boundaryCount={2} siblingCount={0} />
     </Container>)
