@@ -43,7 +43,7 @@ const UserDetails: FC = () => {
     return (
         <Container>
             <Body>
-                <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" onClick={() => routing.redirect("profile")} />
                 <TextPrimary marginBottom={`${Spacing[1]}rem`} fontWeight="600">{user.name} {user.surname}</TextPrimary>
                 <TextSecondary>{user.company.job_title} - {user.company.name}</TextSecondary>
             </Body>

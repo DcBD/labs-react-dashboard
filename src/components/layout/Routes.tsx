@@ -1,6 +1,7 @@
 
 import NotFound404 from "components/pages/errors/NotFound404";
 import HomePage from "components/pages/home/HomePage";
+import ProfilePage from "components/pages/profile/ProfilePage";
 import { FC } from "react";
 import {
     BrowserRouter as Router,
@@ -19,6 +20,7 @@ const Routes: FC = () => {
             <Route path="/people" />
             <Route path="/entities" />
             <Route path="/administration" />
+            <Route path="/profile" component={ProfilePage} />
 
             <Route component={NotFound404} />
 
