@@ -2,6 +2,7 @@ import { Avatar } from "@material-ui/core";
 import Item from "components/layout/LeftMenu/components/Item";
 import useAuth from "features/application/hooks/useAuth";
 import { FC } from "react";
+import useRouting from "services/hooks/useRouting";
 import styled from "styled-components";
 import { border, borderTop } from "styledHelpers/components/Borders";
 import { TextPrimary, TextSecondary } from "styledHelpers/components/Text";
@@ -21,7 +22,7 @@ const Body = styled.div`
 
 const Footer = styled.div`
     ${borderTop()}
-    padding:${Spacing[2]}rem ${Spacing[3]}rem;
+   
     margin-top: ${Spacing[2]}rem;
 
 `;
@@ -37,6 +38,7 @@ const UserImage = styled(Avatar)`
 const UserDetails: FC = () => {
 
     const user = useAuth();
+    const routing = useRouting();
 
     return (
         <Container>
@@ -46,11 +48,11 @@ const UserDetails: FC = () => {
                 <TextSecondary>{user.company.job_title} - {user.company.name}</TextSecondary>
             </Body>
             <Footer>
-                <Item icon="people" withButton buttonIcon="user-plus">
+                <Item icon="people" withButton buttonIcon="user-plus" onClick={() => routing.redirect("your-network-add")}>
                     Your Network
                 </Item>
 
-                <Item icon="publications" withButton buttonIcon="plus">
+                <Item icon="publications" withButton buttonIcon="plus" onClick={() => routing.redirect("publications-add")}>
                     Publications
                 </Item>
             </Footer>

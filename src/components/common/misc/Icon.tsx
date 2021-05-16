@@ -3,7 +3,7 @@ import { IconsList } from "shared/Icons";
 import { Styles } from "shared/Interfaces";
 import { IconName, Size } from "shared/Types";
 import styled from "styled-components";
-import { badge, fillGray, rounded } from "styledHelpers/components/Effects";
+import { badge, fillGray, grayBackgroundHover, rounded } from "styledHelpers/components/Effects";
 import { FontSizes, IconSize } from "styledHelpers/Sizes";
 import { Spacing } from "styledHelpers/Spacing";
 
@@ -21,7 +21,7 @@ const iconBadgeEffect = (badgeContent: string | number): Styles => {
     }
 }
 
-const Container = styled.div<{ filled: boolean, $size: Size, badgeContent?: string | number }>`
+const Container = styled.div<{ filled: boolean, $size: Size, badgeContent?: string | number, $withHover: boolean }>`
 
     display:flex;
     position:relative;
@@ -30,6 +30,8 @@ const Container = styled.div<{ filled: boolean, $size: Size, badgeContent?: stri
     align-items: center;
     align-content: center;
     justify-content:center;
+
+    padding: ${Spacing[6]}px;
 
     ${({ filled }) => filled && fillGray()}
     
@@ -46,6 +48,8 @@ const Container = styled.div<{ filled: boolean, $size: Size, badgeContent?: stri
     }
 
     ${({ badgeContent }) => badgeContent && iconBadgeEffect(badgeContent)}
+
+    ${({ $withHover }) => $withHover && grayBackgroundHover()};
 `;
 
 
@@ -56,14 +60,15 @@ interface IIconProps {
     filled?: boolean
     size?: Size
     badgeContent?: string | number
+    onClick?: () => void
 }
 
 
-const Icon: FC<IIconProps> = React.memo(({ icon, filled = false, size = "16", badgeContent }: IIconProps) => {
+const Icon: FC<IIconProps> = React.memo(({ icon, filled = false, size = "16", badgeContent, onClick }: IIconProps) => {
 
     const IconComponent = IconsList[icon];
 
-    return <Container filled={filled} $size={size} badgeContent={badgeContent}>
+    return <Container filled={filled} $size={size} badgeContent={badgeContent} onClick={onClick} $withHover={undefined !== onClick}>
         <IconComponent />
 
     </Container>

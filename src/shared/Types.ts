@@ -1,4 +1,4 @@
-export type Size = "10" | "12" | "14" | "16" | "18" | "20" | "22" | "24";
+export type Size = "10" | "12" | "14" | "16" | "18" | "20" | "22" | "24" | "auto";
 
 export type IconName =
     "administration" | "arrow-down" | "bell" | "cog" | "comments" |

@@ -15,7 +15,8 @@ export const grayBackgroundHover = (): Styles => {
     return {
         ...backgroundTransition(),
         "&:hover": {
-            backgroundColor: Colors.grayHover
+            backgroundColor: Colors.grayHover,
+            cursor: "pointer"
         }
     }
 }

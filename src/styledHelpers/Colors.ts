@@ -10,7 +10,7 @@ export const Colors = {
     /* #region  Gray */
 
     grayBorder: "#e8e8e8",
-    grayHover: "#b6b6b6",
+    grayHover: "rgba(182, 182, 182, 0.4)",
     grayBackground: "#e8e8e8",
     grayText: "#c4c6c8",
 

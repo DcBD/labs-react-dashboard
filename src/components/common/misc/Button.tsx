@@ -5,8 +5,11 @@ import styled from "styled-components";
 import { buttonColors, Colors } from "styledHelpers/Colors";
 import { Spacing } from "styledHelpers/Spacing";
 
+interface IButton {
+    onClick?: () => void
+}
 
-interface ButtonBaseProps {
+interface ButtonBaseProps extends IButton {
     type: ButtonType,
     color: ButtonColor
 }
@@ -15,7 +18,7 @@ interface StyledButtonProps {
     $borderColor?: string
 }
 
-interface IButtonProps {
+interface IButtonProps extends IButton {
 
 }
 
@@ -27,16 +30,16 @@ const StyledButton = styled(Button) <StyledButtonProps>`
     ${({ $borderColor }) => $borderColor && `border-color:${$borderColor};`}
 `;
 
-export const ButtonBase: FC<ButtonBaseProps> = ({ children, type, color }) => {
+export const ButtonBase: FC<ButtonBaseProps> = ({ children, type, color, onClick }) => {
 
     const pallette = buttonColors(color);
 
     return (
-        <StyledButton variant={type} $borderColor={pallette.border}> {children} </StyledButton>
+        <StyledButton variant={type} $borderColor={pallette.border} onClick={onClick}> {children} </StyledButton>
     )
 }
 
 
-export const ButtonDarkOutlined: FC<IButtonProps> = ({ children }) => {
-    return <ButtonBase type="outlined" color="dark">{children}</ButtonBase>
+export const ButtonDarkOutlined: FC<IButtonProps> = ({ children, onClick }) => {
+    return <ButtonBase type="outlined" color="dark" onClick={onClick}>{children}</ButtonBase>
 }

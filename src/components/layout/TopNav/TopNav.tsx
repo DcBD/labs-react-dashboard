@@ -15,7 +15,7 @@ const Container = styled.div`
     position:relative;
     display:flex;
     align-items:center;
-    padding: ${Spacing[1]}rem ${Spacing[3]}rem;
+    padding: 0 ${Spacing[3]}rem;
 `;
 
 const LogoContainer = styled.div`
@@ -64,7 +64,7 @@ const TopNav = () => {
             <Container>
                 <LeftSection>
                     <LogoContainer>
-                        <Logo />
+                        <Logo size="auto" />
                     </LogoContainer>
 
                     <NavigationMenu selected={selectedItem?.value} />
@@ -78,11 +78,11 @@ const TopNav = () => {
 
 
                 <RightSection>
-                    <Icon icon="house" />
+                    <Icon icon="house" onClick={() => routing.redirect("/")} />
 
-                    <Icon icon="comments" filled badgeContent="3" />
+                    <Icon icon="comments" filled badgeContent="3" onClick={() => routing.redirect("comments")} />
 
-                    <Icon icon="bell" filled badgeContent="3" />
+                    <Icon icon="bell" filled badgeContent="3" onClick={() => routing.redirect("notifications")} />
 
                 </RightSection>
 
