@@ -8,7 +8,8 @@ interface INavigationItems {
 export interface INavigationItem {
     Icon: any,
     Text: any,
-    value: string
+    value: string,
+    action: string
 }
 
 
@@ -19,27 +20,32 @@ const NavigationItems: INavigationItems = {
         {
             Icon: () => <Icon icon="house2" />,
             Text: () => <span>Home</span>,
-            value: "home"
+            value: "home",
+            action: "/"
         },
         {
             Icon: () => <Icon icon="publications" />,
             Text: () => <span>Publications</span>,
-            value: "publications"
+            value: "publications",
+            action: "/publications"
         },
         {
             Icon: () => <Icon icon="people" />,
             Text: () => <span>People</span>,
-            value: "people"
+            value: "people",
+            action: "/people"
         },
         {
             Icon: () => <Icon icon="entities2" />,
             Text: () => <span>Entities</span>,
-            value: "entities"
+            value: "entities",
+            action: "/entities"
         },
         {
             Icon: () => <Icon icon="administration" />,
             Text: () => <span>Administration</span>,
-            value: "administration"
+            value: "administration",
+            action: "/administration"
         }
     ],
 
@@ -47,27 +53,32 @@ const NavigationItems: INavigationItems = {
         {
             Icon: () => <Icon icon="comments" />,
             Text: () => <span>Client contract</span>,
-            value: "client contract"
+            value: "client contract",
+            action: "/client-contract"
         },
         {
             Icon: () => <Icon icon="comments" />,
             Text: () => <span>Supplier contract</span>,
-            value: "supplier contract"
+            value: "supplier contract",
+            action: "/supplier-contract"
         },
         {
             Icon: () => <Icon icon="entities" />,
             Text: () => <span>Corporate</span>,
-            value: "corporate"
+            value: "corporate",
+            action: "/corporate"
         },
         {
             Icon: () => <Icon icon="comments" />,
             Text: () => <span>Group Norms</span>,
-            value: "group norms"
+            value: "group norms",
+            action: "/group-norms"
         },
         {
             Icon: () => <Icon icon="comments" />,
             Text: () => <span>Real estate contracts</span>,
-            value: "real estate contracts"
+            value: "real estate contracts",
+            action: "/real-estate-contracts"
         }
     ],
 
@@ -75,17 +86,20 @@ const NavigationItems: INavigationItems = {
         {
             Icon: () => <Icon icon="comments" />,
             Text: () => <span>Corporate</span>,
-            value: "corporate"
+            value: "corporate",
+            action: "/corporate"
         },
         {
             Icon: () => <Icon icon="privacy" />,
             Text: () => <span>Group Norms</span>,
-            value: "group norms"
+            value: "group norms",
+            action: "/group-norms"
         },
         {
             Icon: () => <Icon icon="settings" />,
             Text: () => <span>Real estate contracts</span>,
-            value: "real estate contracts"
+            value: "real estate contracts",
+            action: "/real-estate-contracts"
         }
     ]
 }
@@ -106,6 +120,14 @@ export function getItems(value: string): Array<INavigationItem> {
     return allItems.filter((item) => item.value.toLowerCase() === value.toLowerCase());
 }
 
+export function getItemByRoute(route: string): INavigationItem | undefined {
+    const items = NavigationItems;
 
+    const allItems = [...items.platform, ...items.workspaces, ...items.account];
+
+    return allItems.find((item) => item.action.toLowerCase() === route);
+
+
+}
 
 export default NavigationItems;

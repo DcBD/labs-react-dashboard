@@ -12,18 +12,18 @@ import {
 const Routes: FC = () => {
 
     return (
-        <Router>
-            <Switch>
-                <Route path="/home" component={HomePage} />
-                <Route path="/publications" />
-                <Route path="/people" />
-                <Route path="/entities" />
-                <Route path="/administration" />
 
-                <Route component={NotFound404} />
+        <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/publications" />
+            <Route path="/people" />
+            <Route path="/entities" />
+            <Route path="/administration" />
 
-            </Switch>
-        </Router>
+            <Route component={NotFound404} />
+
+        </Switch>
+
     )
 
 }

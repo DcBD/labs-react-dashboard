@@ -5,6 +5,10 @@ import SearchBar from 'components/layout/TopNav/components/SearchBar';
 import styled from 'styled-components';
 import { Spacing } from 'styledHelpers/Spacing';
 import Icon from 'components/common/misc/Icon';
+import useRouting from 'services/hooks/useRouting';
+import { useEffect, useState } from 'react';
+import { getItemByRoute } from 'components/common/navigation/NavigationMenuItems';
+
 
 
 const Container = styled.div`
@@ -50,6 +54,9 @@ const RightSection = styled.div`
 
 const TopNav = () => {
 
+    const routing = useRouting();
+
+    const [selectedItem] = useState(getItemByRoute(routing.route));
 
     return (
 
@@ -60,7 +67,7 @@ const TopNav = () => {
                         <Logo />
                     </LogoContainer>
 
-                    <NavigationMenu />
+                    <NavigationMenu selected={selectedItem?.value} />
                 </LeftSection>
 
                 <CenterSection>

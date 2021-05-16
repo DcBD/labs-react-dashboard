@@ -3,6 +3,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuSection, MenuHeader, Men
 import NavigationItems, { getItem, INavigationItem } from 'components/common/navigation/NavigationMenuItems';
 import { FC, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
+import useRouting from 'services/hooks/useRouting';
+
 
 
 interface INavigationMenu {
@@ -19,6 +21,8 @@ const NavigationMenu: FC<INavigationMenu> = ({
     selected = 'home'
 }: INavigationMenu) => {
 
+    const routing = useRouting();
+
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
     const [value, setValue] = useState(selected)
@@ -29,11 +33,23 @@ const NavigationMenu: FC<INavigationMenu> = ({
         workspaces: NavigationItems.workspaces
     })
 
-    const handleChange = (value: string): void => {
-        setValue(value);
+    const [selectedItem, setSelectedItem] = useState<INavigationItem>(getItem(value) as INavigationItem);
+
+
+
+
+
+
+    const handleChange = (v: string): void => {
+        setValue(v);
+
+        const _selectedItem = getItem(v) as INavigationItem
+        setSelectedItem(_selectedItem);
+        routing.redirect(_selectedItem.action);
 
         toggleDropdown();
     }
+
 
     const handleItemsFilter = (data: string): void => {
         if (data === "") {
@@ -55,7 +71,7 @@ const NavigationMenu: FC<INavigationMenu> = ({
     return (
         <div>
             <DropdownMenu wrapperRef={wrapperRef}>
-                <MenuHeader onClick={toggleDropdown} selected={getItem(value) as INavigationItem} isOpen={dropdownOpen} />
+                <MenuHeader onClick={toggleDropdown} selected={selectedItem} isOpen={dropdownOpen} />
 
                 <DropdownMenuContent visible={dropdownOpen}>
 
