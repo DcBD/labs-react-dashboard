@@ -25,6 +25,9 @@ export const Colors = {
 
     /* #endregion */
 
+    lightBlueBackground: "#e6f0f3",
+    lightBlueText: "#6ba8b9",
+
     /* #region  Dark Blue */
 
     darkBlueBorder: "#4b5268",

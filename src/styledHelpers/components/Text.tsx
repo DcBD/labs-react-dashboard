@@ -56,6 +56,23 @@ export const TextPrimaryDark: FC<Props> = ({ children, ...props }) => {
     )
 }
 
+export const TextDefault: FC<Props> = ({ children, ...props }) => {
+    return (
+        <Text color={Colors.black} {...props}>
+            {children}
+        </Text>
+    )
+}
+
+export const TextBlueLight: FC<Props> = ({ children, ...props }) => {
+    return (
+        <Text color={Colors.lightBlueText} {...props}>
+            {children}
+        </Text>
+    )
+}
+
+
 
 
 

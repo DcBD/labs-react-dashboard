@@ -1,32 +1,31 @@
+import { Icon } from "components/common/misc";
 import { FC } from "react-transition-group/node_modules/@types/react";
 import styled from "styled-components";
 import { Colors } from "styledHelpers/Colors";
 import { Spacing } from "styledHelpers/Spacing";
 
 
-
 const Container = styled.div`
-
+    height: 25px;
+    padding: ${Spacing[2]}rem;
+    margin: ${Spacing[2]}rem 0;
     background-color: ${Colors.lightBlueBackground};
-    color: ${Colors.lightBlueText};
-    padding: ${Spacing[5]}px ${Spacing[2]}rem;
-    margin: ${Spacing[1]}rem;
-    border-radius: 5px;
-
+    display:flex;
+    align-items: center;
+  
 `;
 
 interface Props {
-    value: string
+    name: string
 }
 
-const Label: FC<Props> = ({ value }) => {
-
+const FileListItem: FC<Props> = ({ name }) => {
     return (
         <Container>
-            {value}
+            <Icon icon="file" size="14" /> {name}
         </Container>
     )
 
 }
 
-export default Label
+export default FileListItem;

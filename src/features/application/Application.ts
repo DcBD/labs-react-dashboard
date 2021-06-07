@@ -15,6 +15,7 @@ export interface UserInstance {
         countries: Array<string>
     },
     internalReviews: Array<{
+        id: number,
         name: string
         entity: string
         location: string
@@ -22,6 +23,7 @@ export interface UserInstance {
         date: string
     }>
     proposals: Array<{
+        id: number
         name: string
         entity: string
         location: string
@@ -34,16 +36,18 @@ export interface UserInstance {
         currency: Currency
         type: "" | "Negotiated",
         attachments: Array<string>
-        internal_correspondents: Array<UserInstance>
+        internal_correspondents: Array<string>
+        terms_and_conditions: string,
+        services_and_projects: string
     },
-    // amountOfFees: Array<{
-    //     [year: number]: Array<{
-    //         cost_center: string
-    //         total_amount: number
-    //         currency: Currency
-    //         law_firm: string
-    //     }>
-    // }>
+    amountOfFees: Array<{
+        id: number
+        year: number,
+        cost_center: string,
+        total_amount: string,
+        law_firm: string
+
+    }>
 
 
 }
@@ -70,6 +74,7 @@ export class Application {
             },
             internalReviews: [
                 {
+                    id: 1,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "France",
@@ -77,6 +82,7 @@ export class Application {
                     date: "20/01/2014",
                 },
                 {
+                    id: 2,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "USA",
@@ -84,6 +90,7 @@ export class Application {
                     date: "20/01/2015",
                 },
                 {
+                    id: 3,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "Italy",
@@ -91,6 +98,7 @@ export class Application {
                     date: "20/01/2018",
                 },
                 {
+                    id: 4,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "Germany",
@@ -98,6 +106,7 @@ export class Application {
                     date: "20/01/2018",
                 },
                 {
+                    id: 5,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "Poland",
@@ -107,6 +116,7 @@ export class Application {
             ],
             proposals: [
                 {
+                    id: 1,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "France",
@@ -115,6 +125,7 @@ export class Application {
                     firm: "Racine"
                 },
                 {
+                    id: 2,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "USA",
@@ -123,6 +134,7 @@ export class Application {
                     firm: "Racine"
                 },
                 {
+                    id: 3,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "Germany",
@@ -131,6 +143,7 @@ export class Application {
                     firm: "Racine"
                 },
                 {
+                    id: 4,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "France",
@@ -139,6 +152,7 @@ export class Application {
                     firm: "Racine"
                 },
                 {
+                    id: 5,
                     name: "Lorem ipsum cos tam cos bla bla bla",
                     entity: "Renault Corporation",
                     location: "Italy",
@@ -151,9 +165,37 @@ export class Application {
                 attachments: ["example1.jpg"],
                 currency: "€",
                 hourly_fee: 610,
-                internal_correspondents: [],
-                type: "Negotiated"
-            }
+                internal_correspondents: [
+                    "Lorem Ipsum",
+                    "Dolor amet"
+                ],
+                type: "Negotiated",
+                terms_and_conditions: "Monthly 10k€ retainer - see with Jeanny Smith",
+                services_and_projects: "Corporate M&A and international acquisitions"
+            },
+            amountOfFees: [
+                {
+                    id: 1,
+                    year: 2019,
+                    cost_center: "CS 153",
+                    total_amount: "3500€",
+                    law_firm: "Clifford chance"
+                },
+                {
+                    id: 2,
+                    year: 2018,
+                    cost_center: "CS 153",
+                    total_amount: "9500€",
+                    law_firm: "Linklaters"
+                },
+                {
+                    id: 3,
+                    year: 2017,
+                    cost_center: "CS 153",
+                    total_amount: "3500€",
+                    law_firm: "Clifford chance"
+                }
+            ]
 
         }
     }
@@ -162,24 +204,3 @@ export class Application {
 }
 
 
-// {
-//     year: 2019,
-//     cost_center: "CS 153",
-//     total_amount: 3500,
-//     currency: "€",
-//     law_firm: "Clifford chance"
-// },
-// {
-//     year: 2018,
-//     cost_center: "CS 153",
-//     total_amount: 9500,
-//     currency: "€",
-//     law_firm: "Linklaters"
-// },
-// {
-//     year: 2017,
-//     cost_center: "CS 153",
-//     total_amount: 3500,
-//     currency: "€",
-//     law_firm: "Clifford chance"
-// }

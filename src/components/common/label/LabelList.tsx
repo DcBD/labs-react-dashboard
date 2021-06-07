@@ -4,9 +4,13 @@ import styled from "styled-components";
 import { TextSecondary } from "styledHelpers/components/Text";
 
 
-const Container = styled.div``;
+const Container = styled.div`
+    text-align: left;
+`;
 
-const Labels = styled.div``;
+const Labels = styled.div`
+    display: flex;
+`;
 
 interface Props {
     title: string,
@@ -17,10 +21,10 @@ const LabelList: FC<Props> = ({ title, labels }) => {
 
     return (
         <Container>
-            <TextSecondary>{title}</TextSecondary>
+            <TextSecondary marginBottom="10px">{title}</TextSecondary>
             <Labels>
                 {
-                    labels.map((label) => <Label value={label} />)
+                    labels.map((label, i) => <Label key={i} value={label} />)
                 }
             </Labels>
         </Container>

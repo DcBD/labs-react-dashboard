@@ -14,7 +14,7 @@ export const FontSizes = {
 export const IconSize = {
     10: '0.6rem', // Not implemented
     12: '15px', // Not implemented
-    14: '0.85rem', // Not implemented
+    14: '16px', // Not implemented
     16: '25px',
     18: '1.13rem', // Not implemented
     20: '1.25rem', // Not implemented
