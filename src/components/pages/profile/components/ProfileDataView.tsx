@@ -14,6 +14,7 @@ import { DataGrid, GridColDef } from '@material-ui/data-grid';
 
 const Container = styled.div`
     position: relative;
+    padding: ${Spacing[3]}rem;
 `
 
 const Separator = styled.div`
@@ -47,6 +48,7 @@ const InternalCorrespondents = styled.div`
 const ListItem = styled.div`
     display: flex;
     flex-direction: row;
+    width: 100%;
 
 `;
 
@@ -54,6 +56,7 @@ const ListItemColumn = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-right: ${Spacing[2]}rem;
 `;
 
 
@@ -62,6 +65,7 @@ const UserImage = styled(Avatar)`
     width:32px !important;
     margin-bottom: ${Spacing[2]}rem;
     margin-top: ${Spacing[2]}rem;
+    margin-right: ${Spacing[3]}rem;
 `;
 
 const Proposals = styled.div`
@@ -106,6 +110,13 @@ const AmountOfFees = styled.div`
     position: relative;
 `
 
+
+const EditButton = styled.div`
+    position: absolute;
+    right: 0;
+    margin:${Spacing[2]}rem;
+`
+
 const proposalsColumns: GridColDef[] = [
     { field: 'name', headerName: "Name", flex: 1 },
     { field: 'entity', headerName: "Entity", flex: 1 },
@@ -133,13 +144,17 @@ const amountOfFeesColumns: GridColDef[] = [
 
 
 interface Props {
-    user: UserInstance
+    user: UserInstance,
+    toggleEditMode?: () => void
 }
 
-const ProfileDataView: FC<Props> = ({ user }) => {
+const ProfileDataView: FC<Props> = ({ user, toggleEditMode }) => {
 
     return (
         <Container>
+            <EditButton>
+                <Icon icon="pencil" size="14" onClick={() => toggleEditMode !== undefined && toggleEditMode()} />
+            </EditButton>
             <Tags>
 
                 <LabelList title="Expertise" labels={user.company.expertise} />
@@ -247,11 +262,7 @@ const ProfileDataView: FC<Props> = ({ user }) => {
                         hideFooter
                     />
                 </Grid>
-                <TextPrimaryDark marginRight="auto" marginLeft={`${Spacing[3]}rem`} fontSize="20" fontWeight="500">
-                    See more Reviews
-                </TextPrimaryDark>
             </AmountOfFees>
-            <Separator />
         </Container>
     )
 }

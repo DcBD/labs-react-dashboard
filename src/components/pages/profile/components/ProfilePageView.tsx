@@ -10,6 +10,7 @@ import { Colors } from "styledHelpers/Colors";
 import { TextBlueLight, TextDefault } from "styledHelpers/components/Text";
 
 import { Spacing } from "styledHelpers/Spacing";
+import ProfileInformationEdit from "components/pages/profile/components/ProfileInformationEdit";
 
 
 const Container = styled(Card)`
@@ -81,13 +82,43 @@ interface Props {
     user: UserInstance
 }
 
+interface State {
+    isEditProfileInformation: boolean,
+    isEditProfileData: boolean
+}
 
 
-class ProfilePageView extends Component<Props> {
+class ProfilePageView extends Component<Props, State> {
 
 
     constructor(props: Props) {
         super(props);
+
+        this.state = {
+            isEditProfileInformation: true,
+            isEditProfileData: false,
+        }
+    }
+
+    handleToggleEditProfileInformation = () => {
+        this.setState({ isEditProfileInformation: !this.state.isEditProfileInformation });
+    }
+
+    handleSaveProfileInformation = (data: {
+        name: string,
+        surname: string,
+        job_title: string,
+        phone: string,
+        email: string
+    }) => {
+
+        console.log(data)
+
+        this.handleToggleEditProfileInformation();
+    }
+
+    handleToggleEditProfileData = () => {
+        this.setState({ isEditProfileData: !this.state.isEditProfileData });
     }
 
 
@@ -95,12 +126,14 @@ class ProfilePageView extends Component<Props> {
     render = () => {
 
         const { user } = this.props;
-
+        const { isEditProfileInformation } = this.state;
+        console.log(isEditProfileInformation)
         return (
             <Container>
-                <ProfileInformationView user={user} />
+                {!isEditProfileInformation && <ProfileInformationView user={user} toggleEditMode={this.handleToggleEditProfileInformation} />}
+                {isEditProfileInformation && <ProfileInformationEdit user={user} save={this.handleSaveProfileInformation} />}
                 <Separator />
-                <ProfileDataView user={user} />
+                <ProfileDataView user={user} toggleEditMode={this.handleToggleEditProfileData} />
             </Container>
         );
     }
