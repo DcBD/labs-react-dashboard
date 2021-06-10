@@ -1,7 +1,9 @@
 import { Avatar } from "@material-ui/core";
 import Item from "components/layout/LeftMenu/components/Item";
+import { updateProfileInformation } from "features/application/authSlice";
 import useAuth from "features/application/hooks/useAuth";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import { connect } from "react-redux";
 import useRouting from "services/hooks/useRouting";
 import styled from "styled-components";
 import { border, borderTop } from "styledHelpers/components/Borders";
@@ -36,8 +38,13 @@ const UserImage = styled(Avatar)`
 
 
 const UserDetails: FC = () => {
+    const userInstance = useAuth();
+    const [user, setUser] = useState(userInstance);
 
-    const user = useAuth();
+    useEffect(() => {
+        setUser(userInstance);
+    }, [userInstance])
+
     const routing = useRouting();
 
     return (
@@ -61,4 +68,4 @@ const UserDetails: FC = () => {
     )
 }
 
-export default UserDetails;
+export default connect((state) => state, { updateProfileInformation })(UserDetails);

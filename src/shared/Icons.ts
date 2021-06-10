@@ -26,6 +26,7 @@ import { ReactComponent as Follow } from 'icons/follow.svg'
 import { ReactComponent as File } from 'icons/file.svg'
 import { ReactComponent as Pencil } from 'icons/pencil.svg'
 import { ReactComponent as Check } from 'icons/check.svg'
+import { ReactComponent as Times } from 'icons/times.svg'
 
 
 export const IconsList: Icons = {
@@ -54,5 +55,6 @@ export const IconsList: Icons = {
     "follow": Follow,
     "file": File,
     "pencil": Pencil,
-    "check": Check
+    "check": Check,
+    "times": Times
 }

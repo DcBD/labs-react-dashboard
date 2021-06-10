@@ -3,7 +3,9 @@ import { Icon } from "components/common/misc";
 import Spacer from "components/common/misc/Spacer";
 import TextInput from "components/common/misc/TextInput";
 import { UserInstance } from "features/application/Application";
-import { FC, useState } from "react";
+import { updateProfileInformation } from "features/application/authSlice";
+import { FC, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import styled from "styled-components";
 import { TextBlueLight, TextPrimaryDark } from "styledHelpers/components/Text";
@@ -73,16 +75,12 @@ const ProfileContactContainer = styled.div`
 
 interface Props {
     user: UserInstance,
-    save: ({ name, surname, job_title, phone, email }: {
-        name: string,
-        surname: string,
-        job_title: string,
-        phone: string,
-        email: string
-    }) => void
+    afterSave: () => void
 }
 
-const ProfileInformationEdit: FC<Props> = ({ user, save }) => {
+const ProfileInformationEdit: FC<Props> = ({ user, afterSave }) => {
+
+    const dispatch = useDispatch();
 
     const [name, setName] = useState<string>(user.name);
     const [surname, setSurname] = useState<string>(user.surname);
@@ -90,10 +88,16 @@ const ProfileInformationEdit: FC<Props> = ({ user, save }) => {
     const [phone, setPhone] = useState<string>(user.phone);
     const [email, setEmail] = useState<string>(user.email);
 
+    const save = () => {
+        afterSave();
+        dispatch(updateProfileInformation({ name: name, surname: surname, job_title: job_title, phone: phone, email: email }));
+
+
+    }
 
     return (<Container>
         <SaveButton>
-            <Icon icon="check" size="14" onClick={() => save({ email: "123", phone: "321", surname: "123", job_title: "!@#", name: "!@#s" })} />
+            <Icon icon="check" size="14" onClick={() => save()} />
         </SaveButton>
         <ProfileAvatarContainer>
             <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" />
