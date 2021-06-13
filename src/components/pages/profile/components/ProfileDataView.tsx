@@ -233,7 +233,7 @@ const ProfileDataView: FC<Props> = ({ user, toggleEditMode }) => {
                 </TextPrimaryDark>
                 <Grid>
                     <DataGridList
-                        rows={user.proposals}
+                        rows={user.internalReviews}
                         columns={internalReviewsColumns}
                         pageSize={5}
                         disableExtendRowFullWidth={true}

@@ -26,6 +26,7 @@ const ProfilePage: FC = () => {
         setUser(userInstance);
     }, [userInstance])
 
+
     return (
         <PageContainer>
             <ProfilePageView user={user} />

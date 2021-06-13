@@ -115,7 +115,7 @@ const LabelList: FC<Props> = ({
 
                 <Labels>
                     {
-                        labels.filter(label => !label.editable).map((label, i) => <Label key={label.id} value={label.label} isRemovable={editable} handleRemove={() => handleRemoveItem(label.id)} />)
+                        labels && labels.filter(label => !label.editable).map((label, i) => <Label key={label.id} value={label.label} isRemovable={editable} handleRemove={() => handleRemoveItem(label.id)} />)
                     }
                     {editable && labels.filter(label => label.editable).map((label, index) =>
                         <Editable key={label.id}>

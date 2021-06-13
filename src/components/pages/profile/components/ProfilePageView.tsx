@@ -122,7 +122,7 @@ class ProfilePageView extends Component<Props, State> {
 
         const { user } = this.props;
         const { isEditProfileInformation, isEditProfileData } = this.state;
-        console.log(isEditProfileInformation)
+
         return (
             <Container>
                 {!isEditProfileInformation && <ProfileInformationView user={user} toggleEditMode={this.handleToggleEditProfileInformation} />}

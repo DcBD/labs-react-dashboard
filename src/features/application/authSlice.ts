@@ -28,12 +28,27 @@ export const authSlice = createSlice({
                 state.user.company.job_title = action.payload.job_title;
                 state.user.phone = action.payload.phone;
             }
+        },
+        updateProfileData: (state, action) => {
+            if (state.user) {
+                state.user.company.expertise = action.payload.expertiseItems;
+                state.user.company.specialties = action.payload.specialitiesItems;
+                state.user.company.admission_to_practice_law = action.payload.admissionToPracticeLawItems;
+                state.user.company.countries = action.payload.countries;
+                state.user.panelInformation.hourly_fee = action.payload.hourlyFee;
+                state.user.panelInformation.attachments = action.payload.attachments;
+                state.user.panelInformation.services_and_projects = action.payload.servicesAndProjects;
+                state.user.panelInformation.internal_correspondents = action.payload.internalCorrespondents;
+                state.user.proposals = action.payload.proposals;
+                state.user.internalReviews = action.payload.internalReviews;
+                state.user.amountOfFees = action.payload.amountOfFees;
+            }
         }
     },
 })
 
 
 
-export const { loginUser, updateProfileInformation } = authSlice.actions
+export const { loginUser, updateProfileInformation, updateProfileData } = authSlice.actions
 
 export default authSlice.reducer

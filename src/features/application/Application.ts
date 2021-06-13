@@ -42,7 +42,7 @@ export interface UserInstance {
     },
     amountOfFees: Array<{
         id: number
-        year: number,
+        year: number | string,
         cost_center: string,
         total_amount: string,
         law_firm: string

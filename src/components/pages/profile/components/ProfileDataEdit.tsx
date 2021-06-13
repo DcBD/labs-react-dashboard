@@ -12,7 +12,10 @@ import List from "components/common/list/List/List";
 import Spacer from "components/common/misc/Spacer";
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import { v4 as uuidv4 } from 'uuid';
-import { Grid } from "@material-ui/core";
+
+import { DataGrid, GridColDef } from "@material-ui/data-grid";
+import { useDispatch } from "react-redux";
+import { updateProfileData } from "features/application/authSlice";
 
 
 const Container = styled.div`
@@ -32,8 +35,18 @@ const Separator = styled.div`
 const EditButton = styled.div`
     position: absolute;
     right: 0;
+    top: 0;
     margin:${Spacing[2]}rem;
 `
+
+
+const CloseButton = styled.div`
+    position: absolute;
+    right: 25px;
+    margin:${Spacing[2]}rem;
+    top: 0;
+`
+
 const Tags = styled.div``;
 
 const PanelInformations = styled.div`
@@ -94,17 +107,77 @@ const Proposals = styled.div`
     position: relative;
 `;
 
+const DataGridList = styled(DataGrid)`
+    border: none !important;
+
+
+    * {
+        border: none !important;
+    }
+
+    .MuiDataGrid-columnsContainer{
+        border-bottom:solid ${Colors.grayBorder} 1px !important;
+    }
+ 
+`;
+
+const Grid = styled.div`
+    position: relative;
+    width:100%;
+    height: 320px;
+`;
+
+const AmountOfFees = styled.div`
+    text-align:left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+`
+
+const InternalReviews = styled.div`
+    text-align:left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+`
+
+const proposalsColumns: GridColDef[] = [
+    { field: 'name', headerName: "Name", flex: 1, editable: true },
+    { field: 'entity', headerName: "Entity", flex: 1, editable: true },
+    { field: 'location', headerName: "Location", flex: 1, editable: true },
+    { field: 'expertise', headerName: "Expertise", flex: 1, editable: true },
+    { field: 'date', headerName: "Date", flex: 1, editable: true },
+    { field: 'firm', headerName: "Firm", flex: 1, editable: true },
+];
+
+const internalReviewsColumns: GridColDef[] = [
+    { field: 'name', headerName: "Name", flex: 1, editable: true },
+    { field: 'entity', headerName: "Entity", flex: 1, editable: true },
+    { field: 'location', headerName: "Location", flex: 1, editable: true },
+    { field: 'expertise', headerName: "Expertise", flex: 1, editable: true },
+    { field: 'date', headerName: "Date", flex: 1, editable: true },
+];
+
+const amountOfFeesColumns: GridColDef[] = [
+    { field: 'year', headerName: "Year", flex: 1, editable: true },
+    { field: 'cost_center', headerName: "Const center", flex: 1, editable: true },
+    { field: 'total_amount', headerName: "Total amount", flex: 1, editable: true },
+    { field: 'law_firm', headerName: "Law firm", flex: 1, editable: true },
+];
+
+
+type ProposalColumnFields = "name" | "entity" | "location" | "expertise" | "date" | "firm"
+type InternalReviewsFields = "name" | "entity" | "location" | "expertise" | "date"
+type AmountOfFeesFields = "year" | "cost_center" | "total_amount" | "law_firm"
+
+
 interface Props {
     toggleEditMode?: () => void,
     user: UserInstance
 }
 
 const ProfileDataEdit: FC<Props> = ({ toggleEditMode, user }) => {
-
-
-    const save = () => {
-
-    }
+    const dispatch = useDispatch();
 
     const [expertiseItems, setExpertiseItems] = useState(user.company.expertise);
     const [specialitiesItems, setSpecialitiesItems] = useState(user.company.specialties);
@@ -114,12 +187,94 @@ const ProfileDataEdit: FC<Props> = ({ toggleEditMode, user }) => {
     const [attachments, setAttachments] = useState(user.panelInformation.attachments)
     const [servicesAndProjects, setServicesAndProjects] = useState<string>(user.panelInformation.services_and_projects)
     const [internalCorrespondents, setInternalCorrespondents] = useState(user.panelInformation.internal_correspondents)
+    const [proposals, setProposals] = useState(user.proposals);
+    const [internalReviews, setInternalReviews] = useState(user.internalReviews)
+    const [amountOfFees, setAmountOfFees] = useState(user.amountOfFees)
+
+
+
+
+
+    const save = () => {
+        dispatch(updateProfileData({
+            expertiseItems: expertiseItems.map(item => {
+                return { id: item.id, label: item.label }
+            }),
+            specialitiesItems: specialitiesItems.map(item => {
+                return { id: item.id, label: item.label }
+            }),
+            admissionToPracticeLawItems: admissionToPracticeLawItems.map(item => {
+                return { id: item.id, label: item.label }
+            }),
+            countries: countries.map(item => {
+                return { id: item.id, label: item.label }
+            }),
+            hourlyFee: hourlyFee,
+            attachments: attachments,
+            servicesAndProjects: servicesAndProjects,
+            internalCorrespondents: internalCorrespondents,
+            proposals: proposals,
+            internalReviews: internalReviews,
+            amountOfFees: amountOfFees,
+        }));
+
+        if (toggleEditMode) {
+            toggleEditMode();
+        }
+
+    }
+
+    const handleProposalsUpdate = ({ id, field, value }: { id: number, field: ProposalColumnFields, value: string }) => {
+        const _proposals = [...proposals];
+
+        setProposals(_proposals.map(proposal => {
+            if (proposal.id === id) {
+                const edited = { ...proposal };
+                edited[field] = value;
+                return edited;
+            } else {
+                return proposal;
+            }
+        }))
+    }
+
+    const handleInternalReviewsUpdate = ({ id, field, value }: { id: number, field: InternalReviewsFields, value: string }) => {
+        const _internalReviews = [...internalReviews];
+
+        setInternalReviews(_internalReviews.map(internalReview => {
+            if (internalReview.id === id) {
+                const edited = { ...internalReview };
+                edited[field] = value;
+                return edited;
+            } else {
+                return internalReview;
+            }
+        }))
+    }
+
+    const handleAmountOfFeesUpdate = ({ id, field, value }: { id: number, field: AmountOfFeesFields, value: string }) => {
+        const _amountOfFees = [...amountOfFees];
+
+        setAmountOfFees(_amountOfFees.map(amountOfFeesInstance => {
+            if (amountOfFeesInstance.id === id) {
+                const edited = { ...amountOfFeesInstance };
+                edited[field] = value;
+                return edited;
+            } else {
+                return amountOfFeesInstance;
+            }
+        }))
+    }
+
 
     return (
         <Container>
             <EditButton>
-                <Icon icon="check" size="14" onClick={() => toggleEditMode !== undefined && toggleEditMode()} />
+                <Icon icon="check" size="14" onClick={() => save()} />
             </EditButton>
+            <CloseButton>
+                <Icon icon="times" size="12" onClick={() => toggleEditMode !== undefined && toggleEditMode()} />
+            </CloseButton>
             <Tags>
                 <LabelList title="Expertise" labels={expertiseItems} onChange={setExpertiseItems} editable />
                 <LabelList title="Specialties" labels={specialitiesItems} onChange={setSpecialitiesItems} editable />
@@ -192,8 +347,69 @@ const ProfileDataEdit: FC<Props> = ({ toggleEditMode, user }) => {
                     setInternalCorrespondents(correspondents)
                 }} />
             </InternalCorrespondents>
+            <Proposals>
+
+                <TextPrimaryDark marginTop={`${Spacing[3]}rem`} marginBottom={`${Spacing[4]}rem`} fontWeight="600">
+                    Proposals
+                </TextPrimaryDark>
 
 
+                <Grid>
+                    <DataGridList
+                        rows={proposals}
+                        columns={proposalsColumns}
+                        pageSize={5}
+                        disableExtendRowFullWidth={true}
+                        showColumnRightBorder={false}
+                        showCellRightBorder={false}
+                        hideFooter
+                        onEditCellChangeCommitted={(params) => {
+                            handleProposalsUpdate({ id: params.id as number, field: params.field as ProposalColumnFields, value: params.props.value as string })
+                        }}
+
+                    />
+                </Grid>
+            </Proposals>
+            <Separator />
+            <InternalReviews>
+                <TextPrimaryDark marginTop={`${Spacing[3]}rem`} marginBottom={`${Spacing[4]}rem`} fontWeight="600">
+                    Internal reviews
+                </TextPrimaryDark>
+                <Grid>
+                    <DataGridList
+                        rows={internalReviews}
+                        columns={internalReviewsColumns}
+                        pageSize={5}
+                        disableExtendRowFullWidth={true}
+                        showColumnRightBorder={false}
+                        showCellRightBorder={false}
+                        hideFooter
+                        onEditCellChangeCommitted={(params) => {
+                            handleInternalReviewsUpdate({ id: params.id as number, field: params.field as InternalReviewsFields, value: params.props.value as string })
+                        }}
+
+                    />
+                </Grid>
+            </InternalReviews>
+            <AmountOfFees>
+                <TextPrimaryDark marginTop={`${Spacing[3]}rem`} marginBottom={`${Spacing[4]}rem`} fontWeight="600">
+                    Amount of fees
+                </TextPrimaryDark>
+                <Grid>
+                    <DataGridList
+                        rows={amountOfFees}
+                        columns={amountOfFeesColumns}
+                        pageSize={5}
+                        disableExtendRowFullWidth={true}
+                        showColumnRightBorder={false}
+                        showCellRightBorder={false}
+                        hideFooter
+                        onEditCellChangeCommitted={(params) => {
+                            handleAmountOfFeesUpdate({ id: params.id as number, field: params.field as AmountOfFeesFields, value: params.props.value as string })
+                        }}
+                    />
+                </Grid>
+            </AmountOfFees>
         </Container >
 
     )
