@@ -136,32 +136,5 @@ class ProfilePageView extends Component<Props, State> {
 
 }
 
-
-// const ProfilePageView: FC<Props> = ({ user }) => {
-
-
-//     console.log(user.company.expertise);
-//     return (
-//         <Container>
-//             <ProfileInformation>
-
-
-//             </ProfileInformation>
-//             <Separator />
-//             <Expertise>
-//                 <LabelList title="Expertise" labels={user.company.expertise} />
-//                 <LabelList title="Specialties" labels={user.company.specialties} />
-//                 <LabelList title="Admission to practice law" labels={user.company.admission_to_practice_law} />
-//                 <LabelList title="Countries" labels={user.company.countries} />
-
-//             </Expertise>
-//             <PanelInformation></PanelInformation>
-//             <Proposal></Proposal>
-//             <InternalReviews></InternalReviews>
-//             <AmountOfFees></AmountOfFees>
-//         </Container>
-//     )
-// }
-
 export default ProfilePageView;
 

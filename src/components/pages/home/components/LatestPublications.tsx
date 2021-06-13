@@ -7,6 +7,7 @@ import LatestPublicationItem from "components/pages/home/components/LatestPublic
 import { FC } from "react";
 import { useStore } from "react-redux";
 import styled from "styled-components";
+import { Colors } from "styledHelpers/Colors";
 import { TextPrimary } from "styledHelpers/components/Text";
 import { Spacing } from "styledHelpers/Spacing";
 
@@ -48,9 +49,7 @@ const LatestPublications: FC = () => {
     return (
         <Container>
             <ImageContainer>
-                <Image src="images/building.jpg" alt="Buildings">
-
-                </Image>
+                <Image src="images/building.jpg" alt="Buildings" gradient={Colors.blueGradient} />
 
             </ImageContainer>
             <PublicationsContainer>

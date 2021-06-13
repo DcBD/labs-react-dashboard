@@ -1,5 +1,7 @@
 import FilterList from "components/common/list/Filter/FilterList";
 import ResumeWorkItem, { Props as ResumeWorkItemProps } from "components/pages/home/components/ResumeWorkItem";
+import useComments from "features/api/hooks/useComments";
+import { map } from "lodash-es";
 import { useEffect, useState } from "react";
 import { FC } from "react";
 import styled from "styled-components";
@@ -32,11 +34,18 @@ const getData = (count: number): Array<ResumeWorkItemProps> => {
 
 const ResumeYourWork: FC = () => {
 
-    const [items, setItems] = useState<Array<ResumeWorkItemProps>>([]);
+    const comments = useComments();
+    const [items, setItems] = useState<Array<ResumeWorkItemProps>>(Object.values(comments).map(comment => {
+        return {
+            title: comment.name,
+            description: comment.body,
+            contract_type: "client",
+            corporation: "Corp orat inc.",
+            corporation_logo: "images/logo_placeholder.png",
+        }
+    }));
 
-    useEffect(() => {
-        setItems(getData(200));
-    }, [])
+
 
     return (
         <Container>
