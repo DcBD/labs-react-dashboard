@@ -91,8 +91,6 @@ const ProfileInformationEdit: FC<Props> = ({ user, afterSave }) => {
     const save = () => {
         afterSave();
         dispatch(updateProfileInformation({ name: name, surname: surname, job_title: job_title, phone: phone, email: email }));
-
-
     }
 
     return (<Container>

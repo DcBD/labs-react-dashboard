@@ -1,4 +1,5 @@
 import { Icon } from "components/common/misc";
+import Spacer from "components/common/misc/Spacer";
 import { FC } from "react-transition-group/node_modules/@types/react";
 import styled from "styled-components";
 import { Colors } from "styledHelpers/Colors";
@@ -15,14 +16,25 @@ const Container = styled.div`
   
 `;
 
+const RemoveButton = styled.div`
+
+`;
+
 interface Props {
-    name: string
+    name: string,
+    onRemove?: false | ((name: string) => void)
 }
 
-const FileListItem: FC<Props> = ({ name }) => {
+const FileListItem: FC<Props> = ({ name, onRemove }) => {
     return (
         <Container>
             <Icon icon="file" size="14" /> {name}
+            {onRemove && <>
+                <Spacer />
+                <RemoveButton>
+                    <Icon icon="times" size="10" filled onClick={() => onRemove(name)} />
+                </RemoveButton>
+            </>}
         </Container>
     )
 

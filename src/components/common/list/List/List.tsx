@@ -28,7 +28,7 @@ const List: FC<Props> = ({ items }) => {
 
     return (
         <Container>
-            {items.map(item => <Item>
+            {items.map((item, idx) => <Item key={idx}>
                 {item}
             </Item>)}
         </Container>

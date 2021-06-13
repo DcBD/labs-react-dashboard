@@ -9,10 +9,10 @@ export interface UserInstance {
     company: {
         name: string
         job_title: string
-        expertise: Array<string>
-        specialties: Array<string>
-        admission_to_practice_law: Array<string>
-        countries: Array<string>
+        expertise: Array<Label>
+        specialties: Array<Label>
+        admission_to_practice_law: Array<Label>
+        countries: Array<Label>
     },
     internalReviews: Array<{
         id: number,
@@ -36,7 +36,7 @@ export interface UserInstance {
         currency: Currency
         type: "" | "Negotiated",
         attachments: Array<string>
-        internal_correspondents: Array<string>
+        internal_correspondents: Array<{ id: string, text: string }>
         terms_and_conditions: string,
         services_and_projects: string
     },
@@ -50,6 +50,11 @@ export interface UserInstance {
     }>
 
 
+}
+
+interface Label {
+    id: string,
+    label: string
 }
 
 export interface Session {
@@ -67,10 +72,10 @@ export class Application {
             company: {
                 job_title: "Fullstack developer",
                 name: "CompInc",
-                admission_to_practice_law: ["Paris bar association", "Tunisian bar association"],
-                countries: ["Tunisia"],
-                expertise: ["Mergers and acquisition"],
-                specialties: ["Cross border operation", "Transactions over 500M€/$"],
+                admission_to_practice_law: [{ label: "Paris bar association", id: "1" }, { label: "Tunisian bar association", id: "2" }],
+                countries: [{ label: "Tunisia", id: "1" }],
+                expertise: [{ label: "Mergers and acquisition", id: "1" }],
+                specialties: [{ label: "Cross border operation", id: "1" }, { label: "Transactions over 500M€/$", id: "2" }],
             },
             internalReviews: [
                 {
@@ -166,8 +171,8 @@ export class Application {
                 currency: "€",
                 hourly_fee: 610,
                 internal_correspondents: [
-                    "Lorem Ipsum",
-                    "Dolor amet"
+                    { id: "1", text: "Lorem Ipsum" },
+                    { id: "2", text: "Dolor amet" }
                 ],
                 type: "Negotiated",
                 terms_and_conditions: "Monthly 10k€ retainer - see with Jeanny Smith",
