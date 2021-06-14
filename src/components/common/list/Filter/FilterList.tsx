@@ -5,6 +5,7 @@ import ListMenu from "components/common/list/Filter/ListMenu";
 import Pagination from "components/common/list/Pagination";
 import Spacer from "components/common/misc/Spacer";
 import TextInput from "components/common/misc/TextInput";
+import useAuth from "features/application/hooks/useAuth";
 import { useEffect } from "react";
 import { FC, useState } from "react";
 import { UtilsService } from "services/UtilsService";
@@ -46,7 +47,8 @@ const Body = styled.div`
 
 interface Item {
     title: string,
-    children: React.ReactNode
+    children: React.ReactNode,
+    postId?: number
 }
 
 interface Props {
@@ -59,11 +61,26 @@ interface Props {
 
 const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
 
-
+    const user = useAuth();
     const [page, setPage] = useState<number>(0);
     const [titleFilter, setTitleFilter] = useState<string>("");
+    const [filterBy, setFilterBy] = useState<string>("followed");
+    const [filteredItems, setFilteredItems] = useState<Item[]>([]);
 
-    const filteredItems: Array<Item> = UtilsService.Filter(items, titleFilter, "title");
+    useEffect(() => {
+        setFilteredItems(UtilsService.Filter(items, titleFilter, "title").filter(item => {
+            const _item = item as Item;
+
+            if (filterBy == "my" && _item.postId == user.id) {
+                return true;
+            } else if (filterBy == "followed") {
+                return true;
+            } else {
+                return false;
+            }
+        }));
+    }, [filterBy])
+
     const paginatedItems: Array<Item> = filteredItems.slice(page * itemsPageCount, page * itemsPageCount + itemsPageCount)
     const pagesCount = Math.ceil(filteredItems.length / itemsPageCount);
 
@@ -79,7 +96,7 @@ const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
                 <Title><TextPrimary fontSize="24" fontWeight="600" marginLeft="1.5rem">{name}</TextPrimary></Title>
                 <Spacer />
                 <SearchInput onChange={(e) => setTitleFilter(e.target.value)} value={titleFilter} placeholder="Filter by title..." />
-                <ListMenu />
+                <ListMenu onChange={(val) => setFilterBy(val)} />
             </Header>
             <Body>
                 {

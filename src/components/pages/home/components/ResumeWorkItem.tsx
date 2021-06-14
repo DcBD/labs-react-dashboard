@@ -69,6 +69,7 @@ export interface Props {
     contract_type: Contract
     corporation: string
     corporation_logo: string
+    postId: number
 
 }
 

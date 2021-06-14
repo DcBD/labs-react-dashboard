@@ -15,15 +15,31 @@ const filterItems: IDropDownMenuItemObject[] = [
         Icon: () => <Icon icon="follow" />,
         Text: () => "Followed",
         value: "followed"
+    },
+    {
+        Icon: () => <Icon icon="user-plus" />,
+        Text: () => "My",
+        value: "my"
     }
 ];
 
-const ListMenu: FC = () => {
+interface Props {
+    onChange?: ((value: string) => void) | undefined
+}
+
+const ListMenu: FC<Props> = ({ onChange }) => {
 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
     const [value, setValue] = useState("followed")
+
+
+
     const handleChange = (value: string): void => {
         setValue(value);
+
+        if (onChange !== undefined) {
+            onChange(value)
+        }
 
         toggleDropdown();
     }
@@ -31,7 +47,7 @@ const ListMenu: FC = () => {
     return (
         <Container>
             <DropdownMenu wrapperRef={wrapperRef}>
-                <MenuHeader onClick={toggleDropdown} selected={filterItems[0] as IDropDownMenuItemObject} isOpen={dropdownOpen} />
+                <MenuHeader onClick={toggleDropdown} selected={filterItems.filter(item => item.value == value)[0] as IDropDownMenuItemObject} isOpen={dropdownOpen} />
 
                 <DropdownMenuContent visible={dropdownOpen}>
 

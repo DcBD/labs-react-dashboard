@@ -13,22 +13,6 @@ const Container = styled.div`
     margin-bottom: ${Spacing[5]}rem;
 `
 
-const getData = (count: number): Array<ResumeWorkItemProps> => {
-
-    const data: Array<ResumeWorkItemProps> = [];
-
-    for (let i: number = 0; i < count; i++) {
-        data.push({
-            contract_type: "corporate",
-            corporation: "Subsid. corp.",
-            corporation_logo: "images/logo_placeholder.png",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentasque et henderit orci Donec vehicula justo ut nulla aliquet, ac tincidunt m,etus trisnque.",
-            title: "World company " + (i + 1)
-        })
-    }
-
-    return data;
-}
 
 
 
@@ -42,6 +26,7 @@ const ResumeYourWork: FC = () => {
             contract_type: "client",
             corporation: "Corp orat inc.",
             corporation_logo: "images/logo_placeholder.png",
+            postId: comment.postId
         }
     }));
 
@@ -52,7 +37,7 @@ const ResumeYourWork: FC = () => {
             <FilterList
                 name="Resume your work"
                 items={
-                    items.map(item => ({ title: item.title, children: <ResumeWorkItem {...item} /> }))
+                    items.map(item => ({ title: item.title, postId: item.postId, children: <ResumeWorkItem {...item} /> }))
                 }
             />
         </Container>

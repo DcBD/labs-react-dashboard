@@ -2,6 +2,7 @@
 
 type Currency = "$" | "€"
 export interface UserInstance {
+    id: 1,
     name: string
     surname: string
     email: string
@@ -65,6 +66,7 @@ export class Application {
 
     public static getLoggedInUser = (): UserInstance => {
         return {
+            id: 1,
             name: "John",
             surname: "Doe",
             email: "humbertaswift@gmail.com",
