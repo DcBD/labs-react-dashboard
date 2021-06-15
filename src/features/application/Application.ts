@@ -60,6 +60,9 @@ interface Label {
 
 export interface Session {
     user?: UserInstance
+    leftBarVisible: boolean,
+    navMenuVisible: boolean
+
 }
 
 export class Application {

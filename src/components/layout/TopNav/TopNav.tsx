@@ -8,12 +8,14 @@ import Icon from 'components/common/misc/Icon';
 import useRouting from 'services/hooks/useRouting';
 import { useEffect, useState } from 'react';
 import { getItemByRoute } from 'components/common/navigation/NavigationMenuItems';
+import useHeader from 'features/application/hooks/useHeader';
+import { connect } from 'react-redux';
 
 
 
-const Container = styled.div`
+const Container = styled.div<{ $hidden: boolean }>`
     position:relative;
-    display:flex;
+    ${({ $hidden }) => $hidden ? "display:none;" : "display:flex;"}
     align-items:center;
     padding: 0 ${Spacing[3]}rem;
 `;
@@ -57,17 +59,23 @@ const TopNav = () => {
     const routing = useRouting();
 
     const [selectedItem] = useState(getItemByRoute(routing.route));
+    const [visible] = useHeader();
+    const [hidden, setIsHidden] = useState(!visible);
+
+    useEffect(() => {
+        setIsHidden(!visible);
+    }, [visible])
 
     return (
 
         <AppBar position="static" color="inherit">
-            <Container>
+            <Container $hidden={hidden}>
                 <LeftSection>
                     <LogoContainer>
                         <Logo size="auto" />
                     </LogoContainer>
 
-                    <NavigationMenu selected={selectedItem?.value} />
+                    <NavigationMenu selected={selectedItem?.value as string} />
                 </LeftSection>
 
                 <CenterSection>
@@ -93,4 +101,5 @@ const TopNav = () => {
     )
 }
 
-export default TopNav;
+export default (connect(state => state, {}))(TopNav)
+

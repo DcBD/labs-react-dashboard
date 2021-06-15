@@ -4,7 +4,7 @@ export type IconName =
     "administration" | "arrow-down" | "bell" | "cog" | "comments" |
     "ecosystem" | "entities" | "entities2" | "house" | "house2" | "logo" |
     "logout" | "network" | "people" | "plus" | "privacy" | "publications" | "search" |
-    "settings" | "user-plus" | "paper-pen" | "book" | "follow" | "file" | "pencil" | "check" | "times";
+    "settings" | "user-plus" | "paper-pen" | "book" | "follow" | "file" | "pencil" | "check" | "times" | "resize" | "fullscreen" | "share";
 
 
 export type FontWeight = "normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "initial" | "inherit";

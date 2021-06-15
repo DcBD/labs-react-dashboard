@@ -6,7 +6,8 @@ import { Session, UserInstance } from 'features/application/Application';
 
 
 const initialState: Session = {
-
+    leftBarVisible: true,
+    navMenuVisible: true
 }
 
 
@@ -43,12 +44,18 @@ export const authSlice = createSlice({
                 state.user.internalReviews = action.payload.internalReviews;
                 state.user.amountOfFees = action.payload.amountOfFees;
             }
-        }
+        },
+        toggleLeftBarVisibility: (state, action) => {
+            state.leftBarVisible = action.payload;
+        },
+        toggleNavigationMenuVisibility: (state, action) => {
+            state.navMenuVisible = action.payload;
+        },
     },
 })
 
 
 
-export const { loginUser, updateProfileInformation, updateProfileData } = authSlice.actions
+export const { loginUser, updateProfileInformation, updateProfileData, toggleLeftBarVisibility, toggleNavigationMenuVisibility } = authSlice.actions
 
 export default authSlice.reducer

@@ -27,6 +27,9 @@ import { ReactComponent as File } from 'icons/file.svg'
 import { ReactComponent as Pencil } from 'icons/pencil.svg'
 import { ReactComponent as Check } from 'icons/check.svg'
 import { ReactComponent as Times } from 'icons/times.svg'
+import { ReactComponent as Resize } from 'icons/resize.svg'
+import { ReactComponent as FullScreen } from 'icons/fullscreen.svg'
+import { ReactComponent as Share } from 'icons/share.svg'
 
 
 export const IconsList: Icons = {
@@ -56,5 +59,8 @@ export const IconsList: Icons = {
     "file": File,
     "pencil": Pencil,
     "check": Check,
-    "times": Times
+    "times": Times,
+    "fullscreen": FullScreen,
+    "resize": Resize,
+    "share": Share
 }
