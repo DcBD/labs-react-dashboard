@@ -30,6 +30,12 @@ import { ReactComponent as Times } from 'icons/times.svg'
 import { ReactComponent as Resize } from 'icons/resize.svg'
 import { ReactComponent as FullScreen } from 'icons/fullscreen.svg'
 import { ReactComponent as Share } from 'icons/share.svg'
+import { ReactComponent as SortAsc } from 'icons/sort_asc.svg'
+import { ReactComponent as SortDesc } from 'icons/sort_desc.svg'
+import { ReactComponent as Grid } from 'icons/grid.svg'
+import { ReactComponent as List } from 'icons/list.svg'
+import { ReactComponent as Filter } from 'icons/filter.svg'
+import { ReactComponent as Option } from 'icons/option.svg'
 
 
 export const IconsList: Icons = {
@@ -62,5 +68,11 @@ export const IconsList: Icons = {
     "times": Times,
     "fullscreen": FullScreen,
     "resize": Resize,
-    "share": Share
+    "share": Share,
+    "sort-asc": SortAsc,
+    "sort-desc": SortDesc,
+    "grid": Grid,
+    "list": List,
+    "filter": Filter,
+    "option": Option
 }

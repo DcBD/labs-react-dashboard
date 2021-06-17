@@ -8,12 +8,13 @@ import { TextPrimary, TextSecondary } from "styledHelpers/components/Text";
 import { Spacing } from "styledHelpers/Spacing";
 
 const Container = styled(Card)`
-    margin: ${Spacing[2]}rem;
+
     display: flex;
     height:85px;
-    width:300px;
-    padding: ${Spacing[2]}rem;
+
+
     align-items: center;
+    width:100%;
 `;
 
 

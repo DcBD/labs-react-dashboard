@@ -1,5 +1,6 @@
-import GridList from "components/common/list/GridList/GridList";
+
 import Page from "components/layout/Page";
+import GridList from "components/pages/entities/components/GridList/GridList";
 import usePhotos from "features/api/hooks/usePhotos";
 
 import { FC, useState } from "react";

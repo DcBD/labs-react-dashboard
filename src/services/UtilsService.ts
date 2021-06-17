@@ -1,3 +1,5 @@
+import { Sort } from "shared/Types";
+
 export class UtilsService {
 
     /**
@@ -13,6 +15,20 @@ export class UtilsService {
 
     public static Random(multiplier: number = 0.75) {
         return Math.floor((Math.random() * 100) * multiplier);
+    }
+
+    public static Sort(collection: Array<any>, sort: Sort, key: string) {
+        return collection.sort(function (a, b) {
+            var nameA = a[key].toUpperCase();
+            var nameB = b[key].toUpperCase();
+            if (nameA < nameB) {
+                return sort == "desc" ? 1 : -1;
+            }
+            if (nameA > nameB) {
+                return sort == "desc" ? -1 : 1;
+            }
+            return 0;
+        })
     }
 
 }

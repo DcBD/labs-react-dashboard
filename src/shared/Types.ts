@@ -4,7 +4,9 @@ export type IconName =
     "administration" | "arrow-down" | "bell" | "cog" | "comments" |
     "ecosystem" | "entities" | "entities2" | "house" | "house2" | "logo" |
     "logout" | "network" | "people" | "plus" | "privacy" | "publications" | "search" |
-    "settings" | "user-plus" | "paper-pen" | "book" | "follow" | "file" | "pencil" | "check" | "times" | "resize" | "fullscreen" | "share";
+    "settings" | "user-plus" | "paper-pen" | "book" | "follow" | "file" | "pencil" | "check" |
+    "times" | "resize" | "fullscreen" | "share" | "sort-asc" | "sort-desc" | "grid" | "list" |
+    "filter" | "option";
 
 
 export type FontWeight = "normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "initial" | "inherit";
@@ -14,3 +16,5 @@ export type BackgroundSize = "auto" | "length" | "cover" | "contain" | "initial"
 export type ButtonType = "text" | "outlined" | "contained" | undefined
 
 export type ButtonColor = "primary" | "secondary" | "dark"
+
+export type Sort = "asc" | "desc"
