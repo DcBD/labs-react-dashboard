@@ -1,4 +1,7 @@
+import { Avatar } from "@material-ui/core";
 import { Icon } from "components/common/misc"
+import useAuth from "features/application/hooks/useAuth";
+import { TextPrimary, TextPrimaryDark } from "styledHelpers/components/Text";
 interface INavigationItems {
     platform: Array<INavigationItem>
     workspaces: Array<INavigationItem>
@@ -84,21 +87,29 @@ const NavigationItems: INavigationItems = {
 
     account: [
         {
-            Icon: () => <Icon icon="comments" />,
-            Text: () => <span>Corporate</span>,
-            value: "corporate",
-            action: "/corporate"
+            Icon: () => <Avatar src="/images/avatar.png" />,
+            Text: () => {
+                const user = useAuth();
+
+
+                return <div>
+                    <div><TextPrimaryDark fontWeight="600">{user.name} {user.surname}</TextPrimaryDark></div>
+                    <div><TextPrimary fontSize="14">See profile</TextPrimary></div>
+                </div>
+            },
+            value: "profile",
+            action: "/profile"
         },
         {
             Icon: () => <Icon icon="privacy" />,
-            Text: () => <span>Group Norms</span>,
+            Text: () => <span>Privacy</span>,
             value: "group norms",
             action: "/group-norms"
         },
         {
             Icon: () => <Icon icon="settings" />,
-            Text: () => <span>Real estate contracts</span>,
-            value: "real estate contracts",
+            Text: () => <span>Settings</span>,
+            value: "settings",
             action: "/real-estate-contracts"
         }
     ]

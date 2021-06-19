@@ -98,7 +98,7 @@ const ProfileInformationEdit: FC<Props> = ({ user, afterSave }) => {
             <Icon icon="check" size="14" onClick={() => save()} />
         </SaveButton>
         <ProfileAvatarContainer>
-            <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" />
+            <UserImage alt="Profile picture" src="/images/avatar.png" />
             <TextBlueLight>
                 See profile
             </TextBlueLight>

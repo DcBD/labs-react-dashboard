@@ -2,7 +2,9 @@ import { Card, CardContent } from "@material-ui/core";
 import { Icon } from "components/common/misc";
 import Image from "components/common/misc/Image";
 import Spacer from "components/common/misc/Spacer";
+import { useHistory } from "react-router-dom";
 import { FC } from "react-transition-group/node_modules/@types/react";
+import { RoutingService } from "services/RoutingService";
 import { IconName } from "shared/Types";
 import styled from "styled-components";
 import { Text, TextPrimary, TextPrimaryDark, TextSecondary } from "styledHelpers/components/Text";
@@ -68,17 +70,20 @@ interface Props {
 }
 
 const WorkspaceItem: FC<Props> = ({ title, name, icon }) => {
+
+    const history = useHistory();
+
     return (
         <Container>
             <ImageContainer>
-                <Image src="images/building.jpg" alt="slider item" gradient={undefined} />
+                <Image src="images/building.jpg" alt="slider item" />
             </ImageContainer>
             <Content>
                 <HeaderContainer>
                     <IconContainer>
                         <Icon icon={icon} size="22" />
                     </IconContainer>
-                    <TextPrimaryDark fontSize="20" fontWeight="600" marginLeft="20px">{title}</TextPrimaryDark>
+                    <TextPrimaryDark fontSize="20" fontWeight="600" marginLeft="20px"><span onClick={() => RoutingService.SetRoute(history, "workspaces")}>{title}</span></TextPrimaryDark>
                 </HeaderContainer>
                 <ContentFooter>
                     <FooterActions>

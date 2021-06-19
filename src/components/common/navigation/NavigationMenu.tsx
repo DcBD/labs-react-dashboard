@@ -1,11 +1,27 @@
 import { Box, TextField } from '@material-ui/core';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuSection, MenuHeader, MenuItems } from 'components/common/menu';
+import { Icon } from 'components/common/misc';
 import NavigationItems, { getItem, INavigationItem } from 'components/common/navigation/NavigationMenuItems';
 import { FC, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
 import useRouting from 'services/hooks/useRouting';
+import styled from 'styled-components';
+import { grayBackgroundHover } from 'styledHelpers/components/Effects';
 
 
+const ScrollbarSection = styled.div`
+    max-height: 300px;
+    overflow-y: scroll;
+`;
+
+const LogoutSection = styled.div`
+
+    height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ${grayBackgroundHover()}
+`;
 
 interface INavigationMenu {
     selected?: string
@@ -80,21 +96,21 @@ const NavigationMenu: FC<INavigationMenu> = ({
                         <Box p={1}>
                             <TextField variant="outlined" size="small" fullWidth placeholder="Filter..." onChange={(e) => handleItemsFilter(e.target.value.toLowerCase())} />
                         </Box>
+                        <ScrollbarSection>
+                            <MenuItems
+                                isOpen
+                                onChange={(value) => { handleChange(value) }}
+                                items={items.platform}
+                                title="Platform"
+                            />
 
-                        <MenuItems
-                            isOpen
-                            onChange={(value) => { handleChange(value) }}
-                            items={items.platform}
-                            title="Platform"
-                        />
-
-                        <MenuItems
-                            isOpen
-                            onChange={(value) => { handleChange(value) }}
-                            items={items.workspaces}
-                            title="Workspaces"
-                        />
-
+                            <MenuItems
+                                isOpen
+                                onChange={(value) => { handleChange(value) }}
+                                items={items.workspaces}
+                                title="Workspaces"
+                            />
+                        </ScrollbarSection>
                     </DropdownMenuSection>
 
                     <DropdownMenuSection>
@@ -105,7 +121,11 @@ const NavigationMenu: FC<INavigationMenu> = ({
                             title="Account"
                         />
                     </DropdownMenuSection>
-
+                    <DropdownMenuSection>
+                        <LogoutSection onClick={() => alert("Are you sure?")}>
+                            <Icon icon="people" /> Logout
+                        </LogoutSection>
+                    </DropdownMenuSection>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>)

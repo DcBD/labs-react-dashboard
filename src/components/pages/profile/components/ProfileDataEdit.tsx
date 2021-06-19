@@ -312,7 +312,7 @@ const ProfileDataEdit: FC<Props> = ({ toggleEditMode, user }) => {
             <InternalCorrespondents>
                 <List items={internalCorrespondents.map(correspondent => <ListItem>
                     <ListItemColumn>
-                        <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                        <UserImage alt="Profile picture" src="/images/avatar.png" />
 
                         <TextInput
                             placeholder={"Type text here"}

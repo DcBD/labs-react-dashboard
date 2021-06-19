@@ -1,5 +1,6 @@
 import { Icon } from 'components/common/misc';
 import Image from 'components/common/misc/Image';
+import IUser from 'entities/api/IUser';
 import { FC } from 'react'
 import { UtilsService } from 'services/UtilsService';
 import { IconName } from 'shared/Types';
@@ -69,7 +70,8 @@ export interface Props {
     contract_type: Contract
     corporation: string
     corporation_logo: string
-    postId: number
+    postId: number,
+    user: IUser
 
 }
 
@@ -84,7 +86,7 @@ const contractNameToIconName = (name: Contract): IconName => {
     }
 }
 
-const ResumeWorkItem: FC<Props> = ({ title, description, corporation_logo, corporation, contract_type }) => {
+const ResumeWorkItem: FC<Props> = ({ title, description, corporation_logo, corporation, contract_type, user }) => {
 
 
 
@@ -106,7 +108,7 @@ const ResumeWorkItem: FC<Props> = ({ title, description, corporation_logo, corpo
                     <TextSecondary>{contract_type}</TextSecondary>
                 </ContractTypeContainer>
                 <DotSpacer />
-                <TextSecondary>Updated {UtilsService.Random()} days ago by John Doe</TextSecondary>
+                <TextSecondary>Updated {UtilsService.Random()} days ago by {user.name}</TextSecondary>
             </Footer>
         </Container>
     )

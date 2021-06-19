@@ -72,7 +72,7 @@ const ProfileInformationView: FC<Props> = ({ user, toggleEditMode }: Props) => {
                 <Icon icon="pencil" size="14" onClick={() => toggleEditMode !== undefined && toggleEditMode()} />
             </EditButton>
             <ProfileAvatarContainer>
-                <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                <UserImage alt="Profile picture" src="/images/avatar.png" />
                 <TextBlueLight>
                     See profile
                 </TextBlueLight>

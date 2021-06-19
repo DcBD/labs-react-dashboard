@@ -1,24 +1,35 @@
 import FilterList from "components/common/list/Filter/FilterList";
-import ResumeWorkItem, { Props as ResumeWorkItemProps } from "components/pages/home/components/ResumeWorkItem";
-import IUser from "entities/api/IUser";
+import Spacer from "components/common/misc/Spacer";
+import TextInput from "components/common/misc/TextInput";
 import useComments from "features/api/hooks/useComments";
-import useUsers from "features/api/hooks/useUsers";
-import { map } from "lodash-es";
-import { useEffect, useState } from "react";
-import { FC } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
+import { TextPrimary } from "styledHelpers/components/Text";
 import { Spacing } from "styledHelpers/Spacing";
+import ResumeWorkItem, { Props as ResumeWorkItemProps } from "components/pages/home/components/ResumeWorkItem";
+import ListButtons from "components/pages/workspaces/ListButtons";
+import useUsers from "features/api/hooks/useUsers";
+import IUser from "entities/api/IUser";
 
 
 
 const Container = styled.div`
-    margin-bottom: ${Spacing[5]}rem;
+    position: relative;
+    width:100%;
+    margin-top:${Spacing[4]}rem;
 `
 
+const TopHeader = styled.div`
+    width:100%;
+    text-align:left;
+ 
+`
 
+interface Props {
 
+}
 
-const ResumeYourWork: FC = () => {
+const LatestUpdates: FC<Props> = () => {
 
     const comments = useComments();
     const users = useUsers();
@@ -39,19 +50,19 @@ const ResumeYourWork: FC = () => {
         }
     }));
 
+    return <Container>
+        <TopHeader>
 
-
-    return (
-        <Container>
             <FilterList
-                name="Resume your work"
+                name="Latest updates"
                 items={
                     items.map(item => ({ title: item.title, postId: item.postId, children: <ResumeWorkItem {...item} /> }))
                 }
+                BeforeBodyContent={() => <ListButtons />}
             />
-        </Container>
-    )
+        </TopHeader>
+    </Container>
+
 }
 
-
-export default ResumeYourWork
+export default LatestUpdates

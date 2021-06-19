@@ -194,7 +194,7 @@ const ProfileDataView: FC<Props> = ({ user, toggleEditMode }) => {
             <InternalCorrespondents>
                 <List items={user.panelInformation.internal_correspondents.map(correspondent => <ListItem>
                     <ListItemColumn>
-                        <UserImage alt="Profile picture" src="https://material-ui.com/static/images/avatar/1.jpg" /><TextPrimaryDark fontWeight="500">{correspondent.text}</TextPrimaryDark>
+                        <UserImage alt="Profile picture" src="/images/avatar.png" /><TextPrimaryDark fontWeight="500">{correspondent.text}</TextPrimaryDark>
                     </ListItemColumn>
                     <Spacer />
                     <ListItemColumn><Icon icon="comments" /><TextPrimaryDark>Message</TextPrimaryDark> </ListItemColumn>

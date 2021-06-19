@@ -70,8 +70,8 @@ export class Application {
     public static getLoggedInUser = (): UserInstance => {
         return {
             id: 1,
-            name: "John",
-            surname: "Doe",
+            name: "Leanne",
+            surname: "Graham",
             email: "humbertaswift@gmail.com",
             phone: "+33 (0)6 12 34 56 78",
             company: {

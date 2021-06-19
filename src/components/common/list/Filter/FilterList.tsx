@@ -6,7 +6,7 @@ import Pagination from "components/common/list/Pagination";
 import Spacer from "components/common/misc/Spacer";
 import TextInput from "components/common/misc/TextInput";
 import useAuth from "features/application/hooks/useAuth";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import { FC, useState } from "react";
 import { UtilsService } from "services/UtilsService";
 import styled from "styled-components";
@@ -38,7 +38,7 @@ const SearchInput = styled(TextInput)`
     width:200px;
 `;
 
-
+const BeforeBody = styled.div``;
 
 const Body = styled.div`
     margin-top: ${Spacing[4]}rem;
@@ -55,11 +55,11 @@ interface Props {
     items: Array<Item>
     itemsPageCount?: number,
     name: string
-
+    BeforeBodyContent?: () => ReactElement
 }
 
 
-const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
+const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name, BeforeBodyContent }) => {
 
     const user = useAuth();
     const [page, setPage] = useState<number>(0);
@@ -79,7 +79,7 @@ const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
                 return false;
             }
         }));
-    }, [filterBy])
+    }, [filterBy, titleFilter])
 
     const paginatedItems: Array<Item> = filteredItems.slice(page * itemsPageCount, page * itemsPageCount + itemsPageCount)
     const pagesCount = Math.ceil(filteredItems.length / itemsPageCount);
@@ -98,6 +98,7 @@ const FilterList: FC<Props> = ({ items, itemsPageCount = 10, name }) => {
                 <SearchInput onChange={(e) => setTitleFilter(e.target.value)} value={titleFilter} placeholder="Filter by title..." />
                 <ListMenu onChange={(val) => setFilterBy(val)} />
             </Header>
+            {BeforeBodyContent && <BeforeBodyContent />}
             <Body>
                 {
                     paginatedItems.length > 0 ? paginatedItems.map(item => <ItemContainer key={item.title}>{item.children}</ItemContainer>) :
